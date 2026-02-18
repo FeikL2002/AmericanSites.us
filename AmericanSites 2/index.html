@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AmericanSites • High-Performance Websites for Local Pros</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: { 950: '#071429', 900: '#0B1F3B', 800: '#102B52' },
+            success: { 500: '#22C55E', 600: '#16A34A', 700: '#15803D' },
+            facebook: '#1877F2',
+            ink: '#0B1220',
+          },
+          boxShadow: {
+            soft: '0 10px 30px rgba(2, 6, 23, 0.10)',
+            strong: '0 20px 40px rgba(2, 6, 23, 0.20)',
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .pay-highlight { border-color: #16A34A !important; box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2); transform: scale(1.02); transition: all 0.5s ease; }
+    @keyframes pulse-subtle {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 0 0 rgba(34,197,94,0.7));
+      }
+      50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 8px 4px rgba(34,197,94,0.2));
+      }
+    }
+    .pulse-green { animation: pulse-subtle 2s infinite; }
+    .template-card:hover .card-img { transform: scale(1.1); }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(7, 20, 41, 0.96) 0%, rgba(11, 31, 59, 0.9) 100%),
+                  url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .trust-bar { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); }
+  </style>
+</head>
+
+<body class="bg-white text-ink antialiased">
+
+  <div class="bg-success-600 text-white py-2.5 relative overflow-hidden shadow-md">
+    <div class="mx-auto max-w-7xl px-4 flex justify-center items-center">
+      <span class="text-sm font-black uppercase tracking-[0.2em]">Now Accepting New Clients for February 2026</span>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between py-4">
+        <a href="#top" class="flex items-center gap-2 font-black italic tracking-tighter text-navy-950 text-2xl">
+          <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-navy-950 text-white shadow-strong rotate-3">A</span>
+          <span>AmericanSites</span>
+        </a>
+        <div class="flex items-center gap-6">
+          <nav class="hidden md:flex items-center gap-8 text-sm font-bold text-slate-600 uppercase tracking-tight">
+            <a href="#why-us" class="hover:text-navy-950 transition-colors">How It Works</a>
+            <a href="#templates" class="hover:text-navy-950 transition-colors">Our Work</a>
+            <a href="#realtor" class="hover:text-navy-950 transition-colors">Realtors</a>
+          </nav>
+          <a href="#contact" class="inline-flex items-center justify-center rounded-full bg-navy-950 px-6 py-2.5 text-sm font-extrabold text-white shadow-soft hover:bg-navy-800 transition-all hover:-translate-y-0.5">Start My Brand</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="relative overflow-hidden hero-gradient pt-20 pb-32">
+      <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-4xl mx-auto">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-black text-success-500 uppercase tracking-widest mb-8 border border-white/10">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-success-500"></span>
+            </span>
+            Real Human Support Available
+          </div>
+
+          <h1 class="text-5xl sm:text-7xl font-black tracking-tight text-white leading-[1.1] mb-8">
+            You Build the Business.<br/>
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-success-400 to-emerald-400">We Build the Brand.</span>
+          </h1>
+
+          <p class="text-xl sm:text-2xl text-white/80 font-medium mb-12 max-w-2xl mx-auto leading-relaxed">
+            Stop losing leads to competitors with better websites. Get a professional, high-speed site designed specifically for your trade—built by a real human for just $10 today.
+          </p>
+
+          <div class="flex flex-col sm:flex-row justify-center gap-5">
+            <a href="#contact" class="group relative inline-flex items-center justify-center rounded-2xl bg-success-600 px-10 py-5 text-xl font-black text-white shadow-xl hover:bg-success-500 transition-all overflow-hidden">
+              <span class="relative z-10">LOCK IN MY $10 SETUP</span>
+            </a>
+            <a href="#templates" class="inline-flex items-center justify-center rounded-2xl bg-white/5 backdrop-blur-sm px-10 py-5 text-xl font-bold text-white border border-white/20 hover:bg-white/10 transition-all">
+              See Live Examples
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="trust-bar -mt-16 relative z-10 border-y border-white/10 py-8">
+      <div class="mx-auto max-w-7xl px-4 flex flex-wrap justify-center gap-8 md:gap-20 opacity-60 grayscale brightness-200">
+        <span class="text-xl font-black italic text-white tracking-tighter uppercase">Win More Jobs</span>
+        <span class="text-xl font-black italic text-white tracking-tighter uppercase">Look Professional</span>
+        <span class="text-xl font-black italic text-white tracking-tighter uppercase">Save Your Time</span>
+        <span class="text-xl font-black italic text-white tracking-tighter uppercase">Local Dominance</span>
+      </div>
+    </div>
+
+    <section id="why-us" class="py-24 bg-white scroll-mt-20">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <h2 class="text-4xl sm:text-5xl font-black text-navy-950 leading-tight mb-6">
+              A Website That Works as <span class="text-success-600 italic">Hard as You Do.</span>
+            </h2>
+            <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+              Don't waste your weekends fighting with "easy" website builders that aren't actually easy. We handle the tech, the design, and the hosting so you can stay focused on the job site.
+            </p>
+            <div class="space-y-6">
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-navy-950 flex items-center justify-center text-white font-bold text-xl shadow-lg">✓</div>
+                <div>
+                  <h4 class="font-bold text-xl text-navy-950">Expert 1-on-1 Guidance</h4>
+                  <p class="text-slate-500">Skip the bots. You'll work directly with a dedicated agent who understands the American trade industry.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-navy-950 flex items-center justify-center text-white font-bold text-xl shadow-lg">✓</div>
+                <div>
+                  <h4 class="font-bold text-xl text-navy-950">Built for Speed & Conversion</h4>
+                  <p class="text-slate-500">Our sites load instantly and are designed to turn "lookers" into paying customers on any device.</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex-shrink-0 w-12 h-12 rounded-2xl bg-navy-950 flex items-center justify-center text-white font-bold text-xl shadow-lg">✓</div>
+                <div>
+                  <h4 class="font-bold text-xl text-navy-950">The No-Risk Start</h4>
+                  <p class="text-slate-500">Start for just $10. We build your draft first to prove our value before you ever commit to a full launch.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="absolute -inset-4 bg-success-600/10 rounded-3xl -rotate-2"></div>
+            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=1000" class="relative rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" alt="Tradesman at work">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="templates" class="bg-slate-50 py-24 scroll-mt-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+          <div class="max-w-2xl">
+            <h2 class="text-4xl font-black text-navy-950 mb-4 uppercase tracking-tighter">Tailored for Your Trade</h2>
+            <p class="text-lg text-slate-600 font-medium">We don't do "one size fits all." Your agent will customize your site to reflect your specific skills and location.</p>
+          </div>
+          <a href="#contact" class="text-navy-950 font-black flex items-center gap-2 group">
+            Don't see your trade? We'll build it anyway
+            <span class="group-hover:translate-x-2 transition-transform">→</span>
+          </a>
+        </div>
+
+        <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div class="template-card group rounded-3xl border-b-4 border-slate-200 bg-white shadow-soft overflow-hidden hover:border-success-600 transition-all">
+            <div class="h-56 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=800" alt="Master Barber" class="card-img h-full w-full object-cover transition-transform duration-700">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-black text-navy-950 mb-2 italic uppercase">Service Based</h3>
+              <p class="text-slate-500 text-sm leading-relaxed mb-6">Built-in booking and clear service menus to keep your schedule full.</p>
+              <a href="#contact" class="inline-flex w-full items-center justify-center rounded-xl bg-slate-100 py-3 text-sm font-black text-navy-950 hover:bg-navy-950 hover:text-white transition-all uppercase tracking-widest">Get This Style</a>
+            </div>
+          </div>
+
+          <div class="template-card group rounded-3xl border-b-4 border-slate-200 bg-white shadow-soft overflow-hidden hover:border-success-600 transition-all">
+            <div class="h-56 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=800" alt="Plumbing/Electric" class="card-img h-full w-full object-cover transition-transform duration-700">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-black text-navy-950 mb-2 italic uppercase">The Contractor</h3>
+              <p class="text-slate-500 text-sm mb-6">High-visibility contact forms and "Emergency Call" buttons for 24/7 trades.</p>
+              <a href="#contact" class="inline-flex w-full items-center justify-center rounded-xl bg-slate-100 py-3 text-sm font-black text-navy-950 hover:bg-navy-950 hover:text-white transition-all uppercase">Get This Style</a>
+            </div>
+          </div>
+
+          <div class="template-card group rounded-3xl border-b-4 border-slate-200 bg-white shadow-soft overflow-hidden hover:border-success-600 transition-all">
+            <div class="h-56 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1592419044706-39796d40f98c?auto=format&fit=crop&q=80&w=800" alt="Lawn Care" class="card-img h-full w-full object-cover transition-transform duration-700">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-black text-navy-950 mb-2 italic uppercase">Home Services</h3>
+              <p class="text-slate-500 text-sm mb-6">Quote request systems and project galleries to showcase your local transformations.</p>
+              <a href="#contact" class="inline-flex w-full items-center justify-center rounded-xl bg-slate-100 py-3 text-sm font-black text-navy-950 hover:bg-navy-950 hover:text-white transition-all uppercase">Get This Style</a>
+            </div>
+          </div>
+
+          <div class="template-card group rounded-3xl border-b-4 border-slate-200 bg-white shadow-soft overflow-hidden hover:border-success-600 transition-all">
+            <div class="h-56 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" alt="Real Estate" class="card-img h-full w-full object-cover transition-transform duration-700">
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-black text-navy-950 mb-2 italic uppercase">Personal Brand</h3>
+              <p class="text-slate-500 text-sm mb-6">Sleek, professional layouts designed to build authority for agents and specialists.</p>
+              <a href="#contact" class="inline-flex w-full items-center justify-center rounded-xl bg-slate-100 py-3 text-sm font-black text-navy-950 hover:bg-navy-950 hover:text-white transition-all uppercase">Get This Style</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Realtor Page Section -->
+    <section id="realtor" class="bg-white py-24 scroll-mt-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <h2 class="text-4xl sm:text-5xl font-black text-navy-950 leading-tight">
+            What we do for Realtor’s
+          </h2>
+          <p class="mt-4 text-lg text-slate-600 font-medium">
+            We build a clean personal brand site that makes you look professional and converts visitors into real leads.
+          </p>
+        </div>
+
+        <div class="grid gap-10 lg:grid-cols-12 lg:items-start">
+          <div class="lg:col-span-7 space-y-8">
+            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+              <h3 class="text-2xl font-black text-navy-950 mb-3 uppercase tracking-tight">Domain Example</h3>
+              <p class="text-xl sm:text-2xl font-black text-slate-700 italic">“Yourname.com”</p>
+              <p class="mt-3 text-slate-600 leading-relaxed">
+                Stop sending clients to a brokerage page. Send them to a domain that belongs to you, is easy to remember, and looks elite on business cards and social media.
+              </p>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-soft">
+              <h3 class="text-2xl font-black text-navy-950 mb-6 uppercase tracking-tight">What your Realtor page includes</h3>
+
+              <div class="grid gap-6 sm:grid-cols-2">
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6">
+                  <p class="text-sm font-black uppercase tracking-widest text-slate-500 mb-2">Lead Capture</p>
+                  <p class="font-bold text-navy-950">A simple contact form that actually converts</p>
+                  <p class="mt-2 text-sm text-slate-600">Visitors reach you directly without distractions or competing agents.</p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6">
+                  <p class="text-sm font-black uppercase tracking-widest text-slate-500 mb-2">Trust Builder</p>
+                  <p class="font-bold text-navy-950">Bio, reviews, and clear “Why work with me”</p>
+                  <p class="mt-2 text-sm text-slate-600">So clients feel confident before they ever call.</p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6">
+                  <p class="text-sm font-black uppercase tracking-widest text-slate-500 mb-2">Mobile First</p>
+                  <p class="font-bold text-navy-950">Looks perfect on Facebook + Google clicks</p>
+                  <p class="mt-2 text-sm text-slate-600">Fast, clean, and optimized for phones.</p>
+                </div>
+
+                <div class="rounded-2xl bg-slate-50 border border-slate-200 p-6">
+                  <p class="text-sm font-black uppercase tracking-widest text-slate-500 mb-2">Customized After We Talk</p>
+                  <p class="font-bold text-navy-950">We fit everything to what you would like</p>
+                  <p class="mt-2 text-sm text-slate-600">Headshot, colors, sections, services, and your local market focus.</p>
+                </div>
+              </div>
+
+              <div class="mt-8">
+                <a href="#contact" class="inline-flex items-center justify-center rounded-2xl bg-navy-950 px-8 py-4 text-lg font-black text-white shadow-soft hover:bg-navy-800 transition-all hover:-translate-y-0.5">
+                  Get Started Today
+                </a>
+                <p class="mt-3 text-sm text-slate-500 font-bold">
+                  Template example below. After we first talk, we fit everything to what you would like.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-3xl border border-slate-200 bg-slate-50 p-6 sm:p-8 shadow-soft">
+              <div class="flex items-end justify-between gap-4 mb-6">
+                <div>
+                  <h3 class="text-2xl font-black text-navy-950 uppercase tracking-tight">Realtor Template Preview</h3>
+                  <p class="mt-2 text-slate-600 text-sm font-medium">Live preview below. We customize it after your kickoff call.</p>
+                </div>
+                <a href="templates/real-estate.html" class="hidden sm:inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-xs font-black text-navy-950 border border-slate-200 hover:bg-slate-100 transition-all uppercase tracking-widest">
+                  Open Full Screen
+                </a>
+              </div>
+
+              <div class="rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-soft">
+                <iframe
+                  src="templates/real-estate.html"
+                  title="Real Estate Template Preview"
+                  class="w-full h-[520px]"
+                  loading="lazy"></iframe>
+              </div>
+
+              <a href="#contact" class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-success-600 px-8 py-4 text-lg font-black text-white shadow-lg hover:bg-success-700 transition-all transform active:scale-[0.98]">
+                Get Started Today
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATED CONTACT SECTION (your layout + Netlify Forms + Stripe link) -->
+    <section id="contact" class="bg-navy-950 py-32 scroll-mt-24 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-1/3 h-1/3 bg-success-600/10 blur-[120px]"></div>
+      <div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-blue-600/10 blur-[120px]"></div>
+
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid gap-16 lg:grid-cols-12 lg:items-start">
+          <div class="lg:col-span-5">
+            <h2 class="text-5xl font-black text-white leading-tight mb-8">Ready to <span class="text-success-500 italic">Upgrade?</span></h2>
+            <p class="text-xl text-white/70 mb-10 leading-relaxed">
+              Secure your agent today. Once you submit your details, the <span class="text-white font-black underline decoration-success-500 underline-offset-4">$10 setup fee</span> locks in your spot.
+            </p>
+
+            <div class="bg-white/5 border border-white/10 p-8 rounded-3xl">
+              <h4 class="text-white font-black uppercase text-xs tracking-[0.3em] mb-4">The 24-Hour Timeline</h4>
+              <ul class="space-y-4">
+                <li class="flex items-center gap-3 text-white/80 font-medium">
+                  <span class="w-2 h-2 rounded-full bg-success-500"></span>
+                  Agent contacts you via +13304077235
+                </li>
+                <li class="flex items-center gap-3 text-white/80 font-medium">
+                  <span class="w-2 h-2 rounded-full bg-success-500"></span>
+                  Full website draft ready by tomorrow
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="lg:col-span-7">
+            <div class="rounded-3xl border border-white/10 bg-white p-8 sm:p-12 shadow-2xl">
+
+              <!-- NETLIFY FORMS:
+                   • Set form notifications in Netlify to lewisjosephfeik@gmail.com
+              -->
+              <form
+                id="leadForm"
+                name="americansites-lead"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+                class="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="americansites-lead" />
+                <div class="hidden">
+                  <label>Don’t fill this out: <input name="bot-field" /></label>
+                </div>
+
+                <input type="hidden" name="_subject" value="New $10 Lead for AmericanSites!" />
+
+                <div class="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Full Name</label>
+                    <input id="name" name="name" required type="text" placeholder="John Doe" class="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 focus:outline-none focus:ring-4 focus:ring-success-600/10 focus:border-success-600 transition-all font-bold" />
+                  </div>
+
+                  <div>
+                    <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Email Address</label>
+                    <input id="email" name="email" required type="email" autocomplete="email" placeholder="john@business.com" class="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 focus:outline-none focus:ring-4 focus:ring-success-600/10 focus:border-success-600 transition-all font-bold" />
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Phone Number</label>
+                  <input id="phone" name="phone" required type="tel" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555" class="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 focus:outline-none focus:ring-4 focus:ring-success-600/10 focus:border-success-600 transition-all font-bold" />
+                </div>
+
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">Your Trade</label>
+                  <input id="industry" name="industry" required placeholder="e.g. Plumbing, Real Estate" class="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 focus:outline-none focus:ring-4 focus:ring-success-600/10 focus:border-success-600 transition-all font-bold" />
+                </div>
+
+                <!-- Optional: Referred by -->
+                <div>
+                  <label class="block text-[10px] font-black uppercase tracking-widest text-slate-400 mb-2">
+                    Referred by <span class="normal-case font-bold text-slate-500">(optional)</span>
+                  </label>
+                  <input id="referred_by" name="referred_by" type="text" placeholder="Name / Facebook page / friend" class="w-full rounded-2xl border border-slate-100 bg-slate-50 px-5 py-4 focus:outline-none focus:ring-4 focus:ring-success-600/10 focus:border-success-600 transition-all font-bold" />
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full rounded-2xl bg-success-600 px-8 py-5 text-xl font-black text-white shadow-lg hover:bg-success-700 transition-all transform active:scale-[0.98]">
+                  Step 1: Submit Details
+                </button>
+              </form>
+
+              <div id="payBox" class="mt-12 rounded-3xl border-2 border-dashed border-slate-200 bg-slate-50 p-8 opacity-50 pointer-events-none transition-all duration-500">
+                <div class="flex items-center justify-between mb-8">
+                  <div>
+                    <h3 class="text-2xl font-black text-navy-950">Step 2: Secure Your Agent</h3>
+                    <p class="text-sm text-slate-500 font-bold">Locks in your $10 setup price</p>
+                  </div>
+                  <span class="bg-navy-950 text-white text-xl px-4 py-2 rounded-xl font-black">$10.00</span>
+                </div>
+
+                <a
+                  href="https://buy.stripe.com/00wfZa98Zg0t71getqcEw00"
+                  target="_blank"
+                  rel="noopener"
+                  class="inline-flex w-full items-center justify-center rounded-2xl bg-navy-950 px-8 py-5 text-xl font-black text-white shadow-lg hover:bg-navy-800 transition-all transform active:scale-[0.98]"
+                >
+                  Pay $10 &amp; Secure My Agent
+                </a>
+
+                <p id="payInstruction" class="mt-4 text-sm text-center text-slate-400 font-black uppercase tracking-widest italic">
+                  Submit Step 1 to Enable Payment
+                </p>
+              </div>
+
+              <div id="formMsg" class="mt-4 hidden rounded-2xl bg-success-50 p-5 text-sm text-success-700 font-black border border-success-100 text-center"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-navy-950 text-white py-20 border-t border-white/5">
+      <div class="mx-auto max-w-7xl px-4 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div>
+          <div class="font-black text-2xl italic tracking-tighter mb-4">AmericanSites</div>
+          <p class="text-sm opacity-40">© <span id="year"></span> AmericanSites. Empowering the American Workforce.</p>
+        </div>
+        <div class="flex items-center gap-8">
+          <a href="https://www.facebook.com/profile.php?id=61587644360208" target="_blank" rel="noopener" class="flex items-center gap-3 text-white/60 hover:text-facebook transition-all group">
+            <svg class="w-6 h-6 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span class="text-sm font-black uppercase tracking-widest">Join the Community</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Step 1 -> unlock Step 2
+  const form = document.getElementById('leadForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const payBox = document.getElementById('payBox');
+  const formMsg = document.getElementById('formMsg');
+  const payInstruction = document.getElementById('payInstruction');
+
+  if (form) {
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "SENDING...";
+
+      // Validate form is filled
+      if (!form.checkValidity()) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Step 1: Submit Details";
+        return;
+      }
+
+      const data = new FormData(form);
+
+      // Submit to Netlify
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(data).toString()
+      })
+      .then(() => {
+        formMsg.textContent = "DETAILS RECEIVED! NOW COMPLETE STEP 2.";
+        formMsg.classList.remove('hidden');
+
+        submitBtn.textContent = "DETAILS SENT ✓";
+        submitBtn.classList.remove('bg-success-600');
+        submitBtn.classList.add('bg-navy-950');
+
+        // Unlock payment
+        payBox.classList.remove('opacity-50', 'pointer-events-none', 'border-dashed');
+        payBox.classList.add('pay-highlight', 'border-success-600', 'bg-white');
+
+        payInstruction.textContent = "Step 1 complete! Click the button above to pay.";
+        payInstruction.classList.remove('text-slate-400');
+        payInstruction.classList.add('text-success-600');
+
+        payBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch(error => {
+        formMsg.textContent = "Oops! Something went wrong. Please try again.";
+        formMsg.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Step 1: Submit Details";
+      });
+    });
+  }
+</script>
