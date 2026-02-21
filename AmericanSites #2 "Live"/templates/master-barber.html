@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Master Barber | Precision &amp; Style • AmericanSites</title>
+</head>
+<body class="bg-[#121212] text-white font-serif">
+
+  <!-- Preview bar -->
+  <div class="bg-slate-900 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between text-sm">
+      <p class="font-semibold opacity-90">AmericanSites • Barber Template Preview</p>
+      <a href="../index.html#templates" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 font-bold hover:bg-white/15">
+        <span aria-hidden="true">←</span> Back
+      </a>
+    </div>
+  </div>
+
+  <div class="fixed bottom-0 w-full bg-white text-black p-4 z-50 flex justify-between items-center md:hidden border-t-4 border-amber-500">
+    <span class="font-bold uppercase tracking-tighter">Ready for a fresh cut?</span>
+    <a href="#book" class="bg-black text-white px-6 py-2 font-bold uppercase text-xs">Book Now</a>
+  </div>
+
+  <nav class="p-8 flex justify-between items-center bg-black">
+    <div class="text-3xl font-black tracking-widest border-y-2 border-amber-500 py-1">THE<span class="text-amber-500">BARBER</span></div>
+    <div class="hidden md:flex space-x-10 uppercase text-xs font-bold tracking-[0.2em]">
+      <a href="#services" class="hover:text-amber-500 transition">Services</a>
+      <a href="#gallery" class="hover:text-amber-500 transition">Portfolio</a>
+      <a href="#book" class="text-amber-500">Book Appointment</a>
+    </div>
+  </nav>
+
+  <section class="h-[70vh] flex items-center justify-center text-center bg-[url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center relative">
+    <div class="absolute inset-0 bg-black/60"></div>
+    <div class="relative z-10 px-4">
+      <h1 class="text-6xl md:text-8xl font-black uppercase mb-4 leading-none">Precision <br><span class="text-amber-500">Since Day One.</span></h1>
+      <p class="text-lg md:text-xl text-gray-300 max-w-xl mx-auto mb-8 font-sans italic">Custom fades, classic straight razor shaves, and premium beard grooming.</p>
+      <a href="#book" class="bg-amber-500 text-black px-12 py-4 font-black uppercase text-lg hover:bg-white transition duration-300">Reserve Your Chair</a>
+    </div>
+  </section>
+
+  <section id="services" class="py-24 px-8 max-w-5xl mx-auto">
+    <h2 class="text-4xl font-black text-center mb-16 tracking-widest uppercase">The Menu</h2>
+    <div class="space-y-8 font-sans">
+      <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+        <div>
+          <h3 class="text-xl font-bold uppercase">The Signature Cut</h3>
+          <p class="text-gray-500 text-sm italic">Consultation, fade/taper, and style</p>
+        </div>
+        <span class="text-amber-500 font-bold">$45</span>
+      </div>
+      <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+        <div>
+          <h3 class="text-xl font-bold uppercase">Beard Sculpt &amp; Line</h3>
+          <p class="text-gray-500 text-sm italic">Hot towel and straight razor finish</p>
+        </div>
+        <span class="text-amber-500 font-bold">$30</span>
+      </div>
+      <div class="flex justify-between items-end border-b border-gray-800 pb-2">
+        <div>
+          <h3 class="text-xl font-bold uppercase">The Full Works</h3>
+          <p class="text-gray-500 text-sm italic">Haircut + Beard + Scalp Massage</p>
+        </div>
+        <span class="text-amber-500 font-bold">$65</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="py-8 px-8 max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <img class="rounded-2xl object-cover h-44 w-full" alt="Cut 1" src="https://images.unsplash.com/photo-1599351431405-41e0b2cb0d0f?auto=format&fit=crop&w=800&q=70">
+      <img class="rounded-2xl object-cover h-44 w-full" alt="Cut 2" src="https://images.unsplash.com/photo-1520975958225-8d73e90f7a10?auto=format&fit=crop&w=800&q=70">
+      <img class="rounded-2xl object-cover h-44 w-full" alt="Cut 3" src="https://images.unsplash.com/photo-1596728325488-58c87691e3ed?auto=format&fit=crop&w=800&q=70">
+      <img class="rounded-2xl object-cover h-44 w-full" alt="Cut 4" src="https://images.unsplash.com/photo-1621600411688-4be93cd68504?auto=format&fit=crop&w=800&q=70">
+    </div>
+  </section>
+
+  <section id="book" class="py-24 px-8 bg-white text-black text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="text-4xl font-black uppercase mb-4">Claim Your Spot</h2>
+      <p class="mb-10 text-gray-600 font-sans">Appointments fill up fast. Use the form below to request your time.</p>
+
+      <!--
+        Formspree placeholder action
+        Replace "yourFormID" with your Formspree form ID (created in Formspree and connected to: lewisjosephfeik@gmail.com)
+        Example: https://formspree.io/f/abcdwxyz
+      -->
+      <form id="barberForm" action="https://formspree.io/f/yourFormID" method="POST" class="grid grid-cols-1 gap-4 font-sans text-left">
+        <input type="hidden" name="_subject" value="AmericanSites: Barber Template Lead" />
+        <input type="hidden" name="industry" value="Barber / Barbershop" />
+        <input type="hidden" name="_replyto" id="_replyto" value="" />
+
+        <input name="name" required type="text" placeholder="Your Name" class="p-4 border border-gray-300 rounded focus:border-amber-500 outline-none">
+        <input name="phone" required type="tel" placeholder="Phone Number" class="p-4 border border-gray-300 rounded focus:border-amber-500 outline-none">
+        <input id="email" name="email" required type="email" placeholder="Email Address" class="p-4 border border-gray-300 rounded focus:border-amber-500 outline-none">
+
+        <select name="service" class="p-4 border border-gray-300 rounded outline-none">
+          <option>Select Service</option>
+          <option>Haircut</option>
+          <option>Beard Grooming</option>
+          <option>The Full Works</option>
+        </select>
+
+        <button type="submit" class="bg-black text-white py-5 font-black uppercase text-xl hover:bg-amber-500 hover:text-black transition duration-300">Request Appointment</button>
+
+        <p class="text-center text-xs text-gray-500">Submissions route to lewisjosephfeik@gmail.com via Formspree once your Form ID is connected.</p>
+      </form>
+
+      <div id="msg" class="mt-6 hidden rounded-xl bg-gray-100 p-4 text-sm text-gray-700"></div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 text-gray-400 py-10 text-center text-sm">
+    <p>&copy; 2026 TheBarber. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('barberForm');
+    const msg = document.getElementById('msg');
+    form?.addEventListener('submit', () => {
+      const emailEl = document.getElementById('email');
+      const replyToEl = document.getElementById('_replyto');
+      if (emailEl && replyToEl) replyToEl.value = emailEl.value || '';
+      if (msg) {
+        msg.classList.remove('hidden');
+        msg.textContent = 'Submitting… Replace yourFormID with your real Formspree ID connected to lewisjosephfeik@gmail.com.';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Personal Brand | Innovator • AmericanSites</title>
+</head>
+
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+  <!-- Preview bar -->
+  <div class="bg-slate-900 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between text-sm">
+      <p class="font-semibold opacity-90">AmericanSites • Personal Brand Template Preview</p>
+      <a href="../index.html#templates" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 font-bold hover:bg-white/15">
+        <span aria-hidden="true">←</span> Back
+      </a>
+    </div>
+  </div>
+
+  <section class="min-h-screen flex flex-col md:flex-row">
+    <div class="md:w-1/2 bg-slate-900 flex items-center justify-center p-12 overflow-hidden relative">
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80" alt="Founder portrait" class="absolute inset-0 w-full h-full object-cover opacity-50">
+      <div class="relative z-10 text-white">
+        <h2 class="text-sm font-bold tracking-[.3em] uppercase mb-4 text-blue-400">Founder &amp; Investor</h2>
+        <h1 class="text-6xl font-black leading-tight mb-6">Building The <br>Future of AI.</h1>
+      </div>
+    </div>
+
+    <div class="md:w-1/2 flex flex-col justify-center p-12 md:p-24 bg-white">
+      <h3 class="text-3xl font-bold mb-6">"Innovation is the only way to survive the noise."</h3>
+      <p class="text-lg text-slate-600 mb-8 leading-relaxed">I help young founders scale from $0 to $1M using lean systems and social leverage. Sign up for my weekly insights.</p>
+
+      <!--
+        Formspree placeholder action
+        Replace "yourFormID" with your Formspree form ID (created in Formspree and connected to: lewisjosephfeik@gmail.com)
+        Example: https://formspree.io/f/abcdwxyz
+      -->
+      <form id="pbForm" action="https://formspree.io/f/yourFormID" method="POST" class="space-y-4">
+        <input type="hidden" name="_subject" value="AmericanSites: Personal Brand Template Lead" />
+        <input type="hidden" name="industry" value="Personal Brand" />
+        <input type="hidden" name="_replyto" id="_replyto" value="" />
+
+        <input name="name" type="text" placeholder="Your Name (optional)" class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+        <input id="email" name="email" required type="email" placeholder="Email Address" class="w-full p-4 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-lg hover:bg-blue-700 transition">Join The Newsletter</button>
+        <p class="text-xs text-slate-500 text-center">Submissions route to lewisjosephfeik@gmail.com via Formspree once your Form ID is connected.</p>
+      </form>
+
+      <div id="msg" class="mt-5 hidden rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-700"></div>
+
+      <div class="mt-12 flex gap-6 text-base text-slate-400">
+        <a href="#" class="hover:text-slate-600">X</a>
+        <a href="#" class="hover:text-slate-600">LinkedIn</a>
+        <a href="#" class="hover:text-slate-600">YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('pbForm');
+    const msg = document.getElementById('msg');
+    form?.addEventListener('submit', () => {
+      const emailEl = document.getElementById('email');
+      const replyToEl = document.getElementById('_replyto');
+      if (emailEl && replyToEl) replyToEl.value = emailEl.value || '';
+      if (msg) {
+        msg.classList.remove('hidden');
+        msg.textContent = 'Submitting… Replace yourFormID with your real Formspree ID connected to lewisjosephfeik@gmail.com.';
+      }
+    });
+  </script>
+
+</body>
+</html>

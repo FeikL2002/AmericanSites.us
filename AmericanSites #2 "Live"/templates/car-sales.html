@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elite Auto Sales Template | AmericanSites</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 font-sans text-gray-900">
+
+  <!-- Preview bar -->
+  <div class="bg-slate-900 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between text-sm">
+      <p class="font-semibold opacity-90">AmericanSites • Car Sales Template Preview</p>
+      <a href="../index.html#templates" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 font-bold hover:bg-white/15">
+        <span aria-hidden="true">←</span> Back
+      </a>
+    </div>
+  </div>
+
+  <div class="bg-red-600 text-white text-center py-2 font-bold sticky top-0 z-50">
+    <a href="tel:5551234567"><i class="fa fa-phone mr-2"></i> NEED A CAR TODAY? CALL OR TEXT: (555) 123-4567</a>
+  </div>
+
+  <nav class="flex justify-between items-center px-8 py-4 bg-white shadow-md">
+    <div class="text-2xl font-black italic tracking-tighter text-gray-800">DRIVE<span class="text-red-600">WITHLEWIS</span></div>
+    <div class="hidden md:flex space-x-6 font-bold uppercase text-sm tracking-widest">
+      <a href="#inventory" class="hover:text-red-600">Current Inventory</a>
+      <a href="#trade" class="hover:text-red-600">Trade-In Value</a>
+      <a href="#reviews" class="hover:text-red-600">Reviews</a>
+      <a href="#contact" class="bg-black text-white px-4 py-2 rounded">Get Approved</a>
+    </div>
+  </nav>
+
+  <section class="relative bg-gray-900 py-20 px-8">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 text-white z-10">
+        <h1 class="text-5xl md:text-7xl font-black uppercase leading-none mb-6">
+          Stop Buying <br><span class="text-red-600">The Wrong Car.</span>
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 max-w-lg">
+          I'm Lewis Joseph, and I’ve helped 500+ families find reliable rides without the dealership headache. Transparent pricing, no games, just keys.
+        </p>
+        <div class="flex gap-4 flex-col sm:flex-row">
+          <a href="#inventory" class="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-md font-bold text-lg uppercase transition text-center">View My Lot</a>
+          <a href="#contact" class="bg-white hover:bg-gray-200 text-black px-8 py-4 rounded-md font-bold text-lg uppercase transition text-center">Get Financed</a>
+        </div>
+      </div>
+      <div class="md:w-1/2 mt-12 md:mt-0 relative">
+        <div class="bg-gray-800 rounded-2xl h-[500px] w-full flex items-center justify-center border-4 border-red-600 overflow-hidden shadow-2xl">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80" alt="Car Salesman" class="object-cover h-full w-full">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inventory" class="py-20 px-8">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-black uppercase mb-12 border-l-8 border-red-600 pl-4">Fresh On The Lot</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden group">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80" alt="2021 Sport Sedan" class="w-full h-56 object-cover">
+            <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 font-bold text-xs uppercase">Just In</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold uppercase">2021 Sport Sedan</h3>
+            <p class="text-gray-500 mb-4">32,000 Miles | Clean Title</p>
+            <div class="flex justify-between items-center border-t pt-4">
+              <span class="text-2xl font-black text-red-600">$28,995</span>
+              <a href="#contact" class="bg-black text-white px-4 py-2 rounded text-sm font-bold uppercase hover:bg-gray-800">Get Payment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden group">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80" alt="2019 Family SUV" class="w-full h-56 object-cover">
+            <div class="absolute top-4 left-4 bg-black text-white px-3 py-1 font-bold text-xs uppercase">Best Value</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold uppercase">2019 Family SUV</h3>
+            <p class="text-gray-500 mb-4">48,000 Miles | 1 Owner</p>
+            <div class="flex justify-between items-center border-t pt-4">
+              <span class="text-2xl font-black text-red-600">$24,450</span>
+              <a href="#contact" class="bg-black text-white px-4 py-2 rounded text-sm font-bold uppercase hover:bg-gray-800">Get Payment</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden group">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80" alt="2020 Work Truck" class="w-full h-56 object-cover">
+            <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 font-bold text-xs uppercase">Hot</div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-2xl font-bold uppercase">2020 Work Truck</h3>
+            <p class="text-gray-500 mb-4">29,000 Miles | Tow Package</p>
+            <div class="flex justify-between items-center border-t pt-4">
+              <span class="text-2xl font-black text-red-600">$31,990</span>
+              <a href="#contact" class="bg-black text-white px-4 py-2 rounded text-sm font-bold uppercase hover:bg-gray-800">Get Payment</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trade" class="bg-red-600 py-16 text-white text-center">
+    <div class="max-w-4xl mx-auto px-8">
+      <h2 class="text-4xl font-black uppercase mb-4">Want Out of Your Current Loan?</h2>
+      <p class="text-xl mb-8 font-medium">I pay top dollar for trades. Even if you owe more than it's worth, I can help.</p>
+      <a href="#contact" class="inline-flex items-center justify-center bg-white text-red-600 px-10 py-4 rounded-full font-black text-xl uppercase shadow-2xl hover:bg-gray-100 transition">Get My Trade Value</a>
+    </div>
+  </section>
+
+  <section id="reviews" class="py-20 px-8">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-4xl font-black uppercase mb-10 border-l-8 border-red-600 pl-4">Real Reviews</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-2xl p-6 shadow-xl">
+          <div class="text-yellow-400 mb-3">
+            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+          </div>
+          <p class="text-gray-700">“No pressure, no runaround. Lewis got me approved same day and I drove home that night.”</p>
+          <p class="mt-4 font-bold text-gray-900">— Jasmine T.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-xl">
+          <div class="text-yellow-400 mb-3">
+            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+          </div>
+          <p class="text-gray-700">“Best car buying experience I’ve ever had. Straight shooter and great communication.”</p>
+          <p class="mt-4 font-bold text-gray-900">— Marcus L.</p>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-xl">
+          <div class="text-yellow-400 mb-3">
+            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+          </div>
+          <p class="text-gray-700">“He worked my trade-in and got my payment where I needed it. Highly recommend.”</p>
+          <p class="mt-4 font-bold text-gray-900">— Alicia R.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-20 px-8">
+    <div class="max-w-4xl mx-auto bg-white p-10 rounded-3xl shadow-2xl">
+      <h2 class="text-3xl font-black uppercase text-center mb-2">Get Pre-Approved</h2>
+      <p class="text-center text-gray-500 mb-10 text-lg">Submit your info and I'll text you within 15 minutes.</p>
+
+      <!--
+        Formspree placeholder action
+        Replace "yourFormID" with your Formspree form ID (created in Formspree and connected to: lewisjosephfeik@gmail.com)
+        Example: https://formspree.io/f/abcdwxyz
+      -->
+      <form id="carForm" action="https://formspree.io/f/yourFormID" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <input type="hidden" name="_subject" value="AmericanSites: Car Sales Template Lead" />
+        <input type="hidden" name="industry" value="Car Sales" />
+        <input type="hidden" name="_replyto" id="_replyto" value="" />
+
+        <input name="name" required type="text" placeholder="Full Name" class="border-2 border-gray-200 p-4 rounded-xl focus:border-red-600 outline-none">
+        <input id="email" name="email" required type="email" placeholder="Email Address" class="border-2 border-gray-200 p-4 rounded-xl focus:border-red-600 outline-none">
+        <input name="phone" required type="tel" placeholder="Phone Number" class="border-2 border-gray-200 p-4 rounded-xl focus:border-red-600 outline-none">
+        <input name="vehicle" type="text" placeholder="What vehicle are you interested in?" class="md:col-span-2 border-2 border-gray-200 p-4 rounded-xl focus:border-red-600 outline-none">
+
+        <select name="credit" class="md:col-span-2 border-2 border-gray-200 p-4 rounded-xl focus:border-red-600 outline-none">
+          <option>Credit Score: 700+ (Excellent)</option>
+          <option>Credit Score: 600-699 (Good)</option>
+          <option>Credit Score: Under 600 (Working on it)</option>
+          <option>First Time Buyer</option>
+        </select>
+
+        <button type="submit" class="md:col-span-2 bg-black text-white py-5 rounded-xl text-xl font-black uppercase hover:bg-red-600 transition duration-300">
+          Submit Application
+        </button>
+
+        <p class="md:col-span-2 text-center text-xs text-gray-500">Submissions route to lewisjosephfeik@gmail.com via Formspree once your Form ID is connected.</p>
+      </form>
+
+      <div id="msg" class="mt-6 hidden rounded-xl bg-gray-100 p-4 text-sm text-gray-700"></div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-500 py-10 text-center">
+    <p>&copy; 2026 DriveWithLewis. All rights reserved. Located at ABC Motors.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('carForm');
+    const msg = document.getElementById('msg');
+    form?.addEventListener('submit', () => {
+      const emailEl = document.getElementById('email');
+      const replyToEl = document.getElementById('_replyto');
+      if (emailEl && replyToEl) replyToEl.value = emailEl.value || '';
+      if (msg) {
+        msg.classList.remove('hidden');
+        msg.textContent = 'Submitting… Replace yourFormID with your real Formspree ID connected to lewisjosephfeik@gmail.com.';
+      }
+    });
+  </script>
+</body>
+</html>

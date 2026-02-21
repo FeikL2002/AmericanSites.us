@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Elite Performance Training | AmericanSites</title>
+</head>
+
+<body class="bg-black text-white font-sans">
+
+  <!-- Preview bar -->
+  <div class="bg-slate-900 text-white">
+    <div class="mx-auto max-w-7xl px-6 py-3 flex items-center justify-between text-sm">
+      <p class="font-semibold opacity-90">AmericanSites • Performance Training Template Preview</p>
+      <a href="../index.html#templates" class="inline-flex items-center gap-2 rounded-xl bg-white/10 px-4 py-2 font-bold hover:bg-white/15">
+        <span aria-hidden="true">←</span> Back
+      </a>
+    </div>
+  </div>
+
+  <nav class="p-6 flex justify-between items-center border-b border-white/10">
+    <div class="text-2xl font-black italic tracking-tighter text-orange-500">IRON<span class="text-white">WILL</span></div>
+    <a href="#join" class="bg-orange-600 hover:bg-orange-500 px-6 py-2 font-bold uppercase text-sm skew-x-[-10deg] transition">Start Training</a>
+  </nav>
+
+  <section class="py-24 px-8 text-center bg-[url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center bg-no-repeat relative">
+    <div class="absolute inset-0 bg-black/70"></div>
+    <div class="relative z-10">
+      <h1 class="text-6xl md:text-8xl font-black uppercase mb-4 italic">Results <span class="text-orange-500">Only.</span></h1>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Custom coaching, nutrition plans, and 24/7 accountability. Your transformation starts now.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#join" class="bg-orange-600 hover:bg-orange-500 px-10 py-4 font-black uppercase text-xl transition">Book 1-on-1 Session</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 grid grid-cols-1 md:grid-cols-3 gap-8 px-8 max-w-7xl mx-auto">
+    <div class="bg-white/5 p-8 border-l-4 border-orange-600">
+      <h3 class="text-2xl font-bold mb-4">Muscle Build</h3>
+      <p class="text-gray-300">Hypertrophy-focused programming designed for maximum growth.</p>
+    </div>
+    <div class="bg-white/5 p-8 border-l-4 border-orange-600">
+      <h3 class="text-2xl font-bold mb-4">Fat Loss</h3>
+      <p class="text-gray-300">Science-based metabolic conditioning to shred body fat.</p>
+    </div>
+    <div class="bg-white/5 p-8 border-l-4 border-orange-600">
+      <h3 class="text-2xl font-bold mb-4">Online Coaching</h3>
+      <p class="text-gray-300">Train anywhere in the world with custom guidance and check-ins.</p>
+    </div>
+  </section>
+
+  <section id="join" class="py-20 px-8">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <div class="lg:col-span-5">
+        <h2 class="text-4xl font-black uppercase mb-3">Start your program</h2>
+        <p class="text-gray-300 mb-8">This section is built to capture leads. Swap in your real Formspree ID (connected to <span class="font-bold">lewisjosephfeik@gmail.com</span>) and submissions will route to your inbox.</p>
+
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-6">
+          <p class="font-bold text-orange-500 uppercase text-sm">What you get</p>
+          <ul class="mt-4 space-y-2 text-gray-200">
+            <li class="flex gap-2"><span class="text-orange-500 font-black">•</span><span>Customized training plan</span></li>
+            <li class="flex gap-2"><span class="text-orange-500 font-black">•</span><span>Nutrition guidance</span></li>
+            <li class="flex gap-2"><span class="text-orange-500 font-black">•</span><span>Weekly check-ins + accountability</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="bg-white text-black rounded-3xl p-8 md:p-10 shadow-2xl">
+          <h3 class="text-2xl font-black uppercase mb-2">Request a 1-on-1 Session</h3>
+          <p class="text-gray-600 mb-8">Tell me your goal and I’ll reach out with next steps.</p>
+
+          <!--
+            Formspree placeholder action
+            Replace "yourFormID" with your Formspree form ID (created in Formspree and connected to: lewisjosephfeik@gmail.com)
+            Example: https://formspree.io/f/abcdwxyz
+          -->
+          <form id="ptForm" action="https://formspree.io/f/yourFormID" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <input type="hidden" name="_subject" value="AmericanSites: Performance Training Template Lead" />
+            <input type="hidden" name="industry" value="Fitness / Coaching" />
+            <input type="hidden" name="_replyto" id="_replyto" value="" />
+
+            <div class="md:col-span-1">
+              <label class="block text-xs font-black uppercase mb-2">Name</label>
+              <input name="name" required type="text" placeholder="Full Name" class="w-full bg-gray-100 p-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-500/30" />
+            </div>
+
+            <div class="md:col-span-1">
+              <label class="block text-xs font-black uppercase mb-2">Phone</label>
+              <input name="phone" required type="tel" placeholder="(555) 555-5555" class="w-full bg-gray-100 p-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-500/30" />
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-xs font-black uppercase mb-2">Email</label>
+              <input id="email" name="email" required type="email" placeholder="you@email.com" class="w-full bg-gray-100 p-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-500/30" />
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-xs font-black uppercase mb-2">Primary Goal</label>
+              <select name="goal" class="w-full bg-gray-100 p-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-500/30">
+                <option>Muscle Build</option>
+                <option>Fat Loss</option>
+                <option>Performance / Athletic</option>
+                <option>General Fitness</option>
+              </select>
+            </div>
+
+            <div class="md:col-span-2">
+              <label class="block text-xs font-black uppercase mb-2">Anything I should know?</label>
+              <textarea name="message" rows="4" placeholder="Injuries, timeline, schedule, etc." class="w-full bg-gray-100 p-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-orange-500/30"></textarea>
+            </div>
+
+            <button type="submit" class="md:col-span-2 bg-orange-600 hover:bg-black hover:text-white text-white font-black py-5 rounded-xl text-xl uppercase transition duration-300">
+              Submit Request
+            </button>
+
+            <p class="md:col-span-2 text-center text-xs text-gray-500">Submissions route to lewisjosephfeik@gmail.com via Formspree once your Form ID is connected.</p>
+          </form>
+
+          <div id="msg" class="mt-6 hidden rounded-xl bg-gray-100 p-4 text-sm text-gray-700"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 text-gray-400 py-10 text-center text-sm">
+    <p>&copy; 2026 IronWill Performance. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('ptForm');
+    const msg = document.getElementById('msg');
+    form?.addEventListener('submit', () => {
+      const emailEl = document.getElementById('email');
+      const replyToEl = document.getElementById('_replyto');
+      if (emailEl && replyToEl) replyToEl.value = emailEl.value || '';
+      if (msg) {
+        msg.classList.remove('hidden');
+        msg.textContent = 'Submitting… Replace yourFormID with your real Formspree ID connected to lewisjosephfeik@gmail.com.';
+      }
+    });
+  </script>
+
+</body>
+</html>
