@@ -22,3 +22,15 @@ Limits are fixed at 32 steps, two starts, one hour from the initial start and 10
 The API reports this ChatGPT session's token use and cost as unavailable (`null`). Provider receipt records, if explicitly imported by the owner, track exact token counts and billed cost separately. No synthetic provider receipt is created in application data; tests use their own isolated databases. The API execution budget is zero and paid execution is disabled.
 
 Evidence summaries and paths are visible to anyone who can read this local preview. Store only reviewable, non-secret evidence. Relative evidence paths are informational; the API never opens or serves files from those paths. Actual worker execution and source provenance are verified by the supervising session before it records a result. This is not an independent cryptographic attestation service.
+
+## Operations and understandable progress
+
+The trusted CLI also accepts:
+
+- `progress`: assigned worker (or BoB/owner) records `stage`, `why`, and `nextStep` on the current task revision. This never advances state or renews a lease.
+- `operations.import`: BoB/owner supplies a sanitized `snapshot` with `source`, `companies`, `projects`, and/or `accounting`. Atomic and bounded; no raw connector snapshots.
+- `operations.company.add/update`: research/orchestrator role; updates carry `companyId`, `revision`, `patch`.
+- `operations.project.add/update`: builder/orchestrator role; updates carry `projectId`, `revision`, `patch`. A preview path must resolve to an existing non-symlink HTML file inside `public/prototypes`.
+- `operations.accounting.add`: bookkeeping/orchestrator role; `entry` includes kind, integer amountCents, supported currency, date, reference, source and account. Refunds require `refundOfIncomeId`; income can explicitly settle a same-account, same-currency `settlesReceivableId`.
+
+All commands require actor and unique stable idempotencyKey. Read `/api/operations` for companies, projects and accounting; `/api/state` includes the same operations object. `/api/stream` is read-only SSE: named `state` events on persisted revision or lease-status changes, keepalive comments, eight-client cap and bounded stream lifetime. Polling remains available. These endpoints expose private runtime data to the trusted local UI and must never be exported as public evidence.

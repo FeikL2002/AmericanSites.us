@@ -15,7 +15,7 @@ A React / React Three Fiber headquarters connected to a real Node 24 + SQLite ta
 
 ## Run locally
 
-Requires Node **24+** (`node:sqlite`), npm, and a WebGL2-capable browser.
+Requires Node **24+** (`node:sqlite`), npm, and a modern browser. WebGL2 is required for the 3D view; the interactive 2D view works without it.
 
 ```sh
 cd agent-hq
@@ -30,12 +30,12 @@ The server stores SQLite in `data/hq.sqlite` by default. Restarting the process 
 
 ## What the interface supports
 
-- Three-floor procedural 3D glass office with five role workstations, clickable desks, multiple rooms, lit stairs, reception, plants, signage, orbit controls and room focus.
+- Three-floor procedural 3D glass office with seven role workstations, clickable desks, multiple rooms, lit stairs, reception, plants, signage, orbit controls and room focus.
 - A procedural **Lamborghini-inspired** wedge sports car. This is not a licensed/high-fidelity Lamborghini asset. The scene is an initial implementation, not a photorealistic match to the supplied reference.
 - Worker typing/head animation only when the backend supplies an active task with an unexpired lease. Idle, blocked, disconnected and approval states do not work-animate. Reduced-motion controls stop worker movement.
 - Task inspector, structured evidence, activity ledger, cost/limit controls, exact task selection, keyboard-accessible role buttons, and structured request preparation.
 - Explicit historical replay reconstructs ownership from events and uses recorded timestamps. Missing historical heartbeats remain unknown/inactive, never fabricated. Future heartbeats are logged.
-- A clearly labeled **design reference — not live data** fallback on browsers without WebGL. Numbers baked into the supplied image are not operational metrics.
+- A coded, keyboard-accessible **2D interactive cutaway** on browsers without WebGL. It shows the same real worker states; the reference image and its invented counters are not displayed.
 
 The cloud QA browser reports `GL_VENDOR = Disabled` and cannot create a WebGL context. The fallback and surrounding controls were inspected; the actual scene still requires a visual/performance check on a WebGL-capable device. JSX/build checks do not prove rendering fidelity.
 
@@ -86,3 +86,24 @@ Limits: 32 task steps, two execution attempts, one-hour task runtime, two-minute
 5. Add artifact-bound owner authorization and deployment adapters only after explicit owner approval. Public hosting, outreach, purchases and destructive operations stay disabled.
 
 No production deployment, external outreach, paid API request, or destructive action was performed.
+
+
+## Phase 2: understandable business work
+
+The primary screen now explains the business goal, current work, last recorded result and next step. The actual working product appears below the office. Seven roles cover BoB, Scout, Codex, Design, QA, Security and Accounting. Roles are separate responsibilities exercised by connected-session agents and trusted local operators, not evidence of calls to different model providers. No unattended runner is connected.
+
+- **Practice Desk:** `public/prototypes/practice-desk/index.html` is a self-contained, functional, unsent concept informed by Riggs Wrestling Academy's official registration page. It uses anonymous DEMO IDs, registration-gated check-in, attendance, fictional cash/check records, derived totals, CSV and device storage. It is not commissioned, affiliated, connected to the academy, or evidence of buying intent. The embedded iframe has an opaque origin and no parent access; localStorage falls back to memory there. Check payments are labeled a generic unverified option. No payment processing occurs.
+- **Opportunities:** source-backed observations are kept separate from business-need hypotheses. Do-not-contact status cannot be cleared by an import. The current concept is tied to an existing researched prospect, not described as a new client.
+- **Accounting:** private SQLite stores integer-cent records with distinct currencies, receipts, refunds, expenses, receivables and commission obligations. Source+account+kind+reference deduplicates receipts; conflicting imports fail. Income only settles explicitly linked receivables. Current-month Stripe data was read and selectively imported locally; fees, payouts, invoices and commissions were not imported. It is a snapshot, not a scheduled sync or bank reconciliation.
+- **Activity:** genuine task transitions, artifact hashes, reviews and test results remain inspectable. The project preview refreshes only when its recorded revision changes. This shows build checkpoints, not a live screen recording of coding.
+- **Research guidance:** Anthropic's [Building effective agents](https://www.anthropic.com/research/building-effective-agents) informed bounded, simple workflows; [LangGraph persistence](https://docs.langchain.com/oss/python/langgraph/persistence) informed checkpoint continuity. Claude/Gemini were not called by this build.
+
+### Private-data boundary
+
+`/api/state`, `/api/operations`, `/api/stream`, and CLI state now contain private bookkeeping. **Never export a whole state response to public files, Git, screenshots shared publicly, or static preview assets.** The runtime database stays in ignored `data/`. Public reports are explicitly selected evidence with no private transaction references, amounts, customer details or connector snapshots. A fresh checkout has no private data and does not replay a past run as live activity.
+
+Prototype HTML is served by the development middleware with a restrictive CSP, including encoded path aliases. Future production hosting must reproduce those headers; static copying alone is insufficient. The iframe allows scripts, local form handlers and sample CSV downloads; CSP still blocks actual form submissions and network connections. The HQ HTTP service is local and read-only, with loopback Host/Origin checks; role attribution through the CLI assumes a trusted operator. Do not expose this service publicly before adding proper authentication, authorization, backup and persistent hosting.
+
+Phase 2 evidence: `phase2-build-manifest.json`, `scout-phase2.json`, `prototype-implementation-phase2.json`, `accounting-phase2.json`, `security-review-phase2.md`, and `qa-phase2.md` under `evidence/`. The build manifest deliberately excludes runtime data and mutable reports. Superseded artifact hashes remain in history; only the latest matching reviewed/tested hash can reach owner review.
+
+Final phase 2 verification: **61/61 tests passed**, Vite build passed, all 24 final-manifest hashes matched before/after. A browser-discovered iframe form issue was fixed in a separately reviewed follow-up. Browser checks confirmed sample session creation, registration gating, check-in and sample cash totals. CSV browser download remained unverified after the download wait timed out; CSV unit tests passed. The JS bundle-size advisory and WebGL/mobile-device validation remain. Final reports: `evidence/phase2-final-manifest.json`, `qa-phase2-final-results.json`, `browser-phase2.json`. Runtime task history and dashboard screenshots are retained privately and excluded from this public repository.

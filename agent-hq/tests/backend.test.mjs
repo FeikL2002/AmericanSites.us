@@ -23,10 +23,10 @@ function fixture(t, path = ':memory:') {
   return { store, command, create, act, start, artifact, review, testing, result, advance: ms => now += ms };
 }
 
-test('empty store has five idle workers, unknown session costs, and disabled sensitive adapters', t => {
+test('empty store has seven idle workers, unknown session costs, and disabled sensitive adapters', t => {
   const { store } = fixture(t);
   const state = store.state();
-  assert.equal(state.workers.length, 5);
+  assert.equal(state.workers.length, 7);
   assert.equal(state.tasks.length, 0);
   assert.ok(state.workers.every(w => w.status === 'idle' && !w.isWorking));
   assert.equal(state.costs.sessionTokens, null);
@@ -168,7 +168,7 @@ test('HTTP serves no-store state only; mutation attempts cannot alter the databa
   const base = `http://127.0.0.1:${server.address().port}`;
   const state = await fetch(`${base}/api/state`);
   assert.equal(state.status, 200); assert.equal(state.headers.get('cache-control'), 'no-store');
-  assert.equal((await state.json()).workers.length, 5);
+  assert.equal((await state.json()).workers.length, 7);
   const mutation = await fetch(`${base}/api/tasks`, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ title: 'Untrusted mutation' }) });
   assert.equal(mutation.status, 403); assert.equal((await mutation.json()).error, 'owner_channel_required');
   assert.equal(f.store.state().tasks.length, 0);

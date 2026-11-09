@@ -4,7 +4,8 @@ import { resolve } from 'node:path';
 import { HQStore } from './store.mjs';
 
 export function createHQServer(store) {
-  return createServer((req, res) => {
+  const streams = new Set();
+  const server = createServer((req, res) => {
     const headers = { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer', 'content-security-policy': "default-src 'none'; frame-ancestors 'none'" };
     const send = (status, data) => { res.writeHead(status, headers); res.end(JSON.stringify(data)); };
     // Protect the loopback API against DNS rebinding. A frontend proxy must rewrite Host.
@@ -23,10 +24,42 @@ export function createHQServer(store) {
       path = target.pathname;
     } catch { return send(400, { error: 'invalid_request_target' }); }
     if (!['GET', 'HEAD'].includes(req.method)) { req.resume(); return send(403, { error: 'owner_channel_required', message: 'This preview is read-only. Assign and update real tasks through the trusted local HQ CLI.' }); }
+    if (path === '/api/stream') {
+      if (req.method === 'HEAD') { res.writeHead(200, { ...headers, 'content-type': 'text/event-stream' }); return res.end(); }
+      if (streams.size >= 8) return send(429, { error: 'stream_limit', message: 'At most eight local dashboard streams are allowed' });
+      res.writeHead(200, { ...headers, 'content-type': 'text/event-stream; charset=utf-8', connection: 'keep-alive', 'x-accel-buffering': 'no' });
+      res.write('retry: 3000\n\n');
+      let lastKey = null, closed = false;
+      const emit = () => {
+        if (closed) return;
+        try {
+          const state = store.state();
+          const key = JSON.stringify([state.revision, state.workers.map(worker => [worker.id, worker.status, worker.isWorking])]);
+          if (key !== lastKey) {
+            if (res.writableLength > 1000000) return cleanup();
+            res.write(`id: ${state.revision}\nevent: state\ndata: ${JSON.stringify(state)}\n\n`);
+            lastKey = key;
+          }
+        } catch { res.write('event: unavailable\ndata: {"error":"state_unavailable"}\n\n'); cleanup(); }
+      };
+      const timer = setInterval(emit, 500);
+      const keepalive = setInterval(() => { if (!closed) res.write(': keepalive\n\n'); }, 15000);
+      const expiry = setTimeout(() => cleanup(), 30 * 60 * 1000);
+      const cleanup = () => { if (closed) return; closed = true; clearInterval(timer); clearInterval(keepalive); clearTimeout(expiry); streams.delete(cleanup); res.end(); };
+      timer.unref(); keepalive.unref(); expiry.unref();
+      streams.add(cleanup);
+      req.on('close', cleanup); res.on('close', cleanup);
+      emit();
+      return;
+    }
     if (path === '/api/state') return send(200, store.state());
+    if (path === '/api/operations') return send(200, store.operations.state());
     if (path === '/api/health') return send(200, { ok: true, persistence: 'sqlite', writes: 'trusted-local-cli', paidExecutionEnabled: false });
     return send(404, { error: 'not_found' });
   });
+  const close = server.close.bind(server);
+  server.close = (callback) => { for (const cleanup of [...streams]) cleanup(); return close(callback); };
+  return server;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

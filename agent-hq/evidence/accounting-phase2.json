@@ -1,0 +1,7 @@
+{
+  "recordedAt": "2026-11-09T10:17:47.534Z",
+  "action": "Read-only current-month Stripe snapshot imported into private SQLite",
+  "dataMinimization": "No customer identity, contact details, transaction references, amounts or runtime database exported to this report.",
+  "verification": "Only successful captured charges accepted. Refund presence checked; totals derived in integer cents. No payout or profit claim.",
+  "limits": "Snapshot only. Fees, bank payouts, invoices and commissions are not connected. No financial write or payment occurred."
+}

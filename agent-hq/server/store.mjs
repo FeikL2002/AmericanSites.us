@@ -2,6 +2,7 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
+import { OperationsLedger } from './operations.mjs';
 
 export const ROLES = Object.freeze([
   { id: 'bob', name: 'BoB', role: 'Orchestrator' },
@@ -9,6 +10,8 @@ export const ROLES = Object.freeze([
   { id: 'designer', name: 'Studio', role: 'UI / 3D designer' },
   { id: 'qa', name: 'QA', role: 'QA tester' },
   { id: 'security', name: 'Sentinel', role: 'Security reviewer' },
+  { id: 'scout', name: 'Scout', role: 'Business researcher' },
+  { id: 'accountant', name: 'Ledger', role: 'Bookkeeping assistant' },
 ]);
 export const POLICY = Object.freeze({ maxSteps: 32, maxAttempts: 2, maxRuntimeMs: 3600000, leaseMs: 120000, maxTasks: 100, paidExecutionEnabled: false, budgetUsd: 0, productionEnabled: false, outreachEnabled: false, destructiveActionsEnabled: false });
 const ACTIVE = new Set(['running', 'review', 'testing']);
@@ -20,7 +23,7 @@ const sha = value => { requireThat(typeof value === 'string' && /^[a-f0-9]{64}$/
 
 /** Trusted local worker channel. HTTP never exposes this command API. */
 export class HQStore {
-  constructor(path = resolve('data/hq.sqlite'), { now = () => Date.now() } = {}) {
+  constructor(path = resolve('data/hq.sqlite'), { now = () => Date.now(), prototypeRoot } = {}) {
     if (path !== ':memory:') mkdirSync(dirname(path), { recursive: true });
     this.db = new DatabaseSync(path);
     this.now = now;
@@ -30,6 +33,7 @@ export class HQStore {
       CREATE TABLE IF NOT EXISTS artifacts (id TEXT PRIMARY KEY, task_id TEXT NOT NULL, payload TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS commands (key TEXT PRIMARY KEY, digest TEXT NOT NULL, result TEXT NOT NULL);
       CREATE TABLE IF NOT EXISTS usage (id TEXT PRIMARY KEY, payload TEXT NOT NULL);`);
+    this.operations = new OperationsLedger(this, { prototypeRoot });
   }
   close() { this.db.close(); }
   get(id) { const row = this.db.prepare('SELECT payload FROM tasks WHERE id=?').get(id); requireThat(row, 'not_found', 'Task not found'); return JSON.parse(row.payload); }
@@ -43,6 +47,7 @@ export class HQStore {
   command(input) {
     requireThat(input && typeof input === 'object' && !Array.isArray(input), 'invalid_input', 'Command must be an object');
     const { action, actor, idempotencyKey } = input;
+    text(action, 100, 'action');
     text(idempotencyKey, 160, 'idempotencyKey');
     requireThat(ids.has(actor) || actor === 'owner', 'forbidden', 'Unknown local actor');
     const digest = hash(input);
@@ -53,6 +58,7 @@ export class HQStore {
       let result;
       if (action === 'create') result = this.create(input);
       else if (action === 'usage') result = this.addUsage(input);
+      else if (action.startsWith('operations.')) result = this.operations.command(input);
       else {
         requireThat(typeof input.taskId === 'string', 'invalid_input', 'taskId is required');
         const task = this.get(input.taskId);
@@ -62,6 +68,7 @@ export class HQStore {
           if (!['block', 'fail', 'cancel'].includes(action)) requireThat(task.steps < POLICY.maxSteps, 'step_limit', 'Task step budget exhausted');
           if (!['block', 'fail', 'cancel'].includes(action) && task.startedAt) requireThat(this.now() - Date.parse(task.startedAt) <= POLICY.maxRuntimeMs, 'runtime_limit', 'Task runtime budget exhausted');
           if (action === 'evidence') result = this.evidence(task, input);
+          else if (action === 'progress') result = this.progress(task, input);
           else result = this.transition(task, input);
           task.steps++;
         }
@@ -75,11 +82,14 @@ export class HQStore {
       return result;
     } catch (error) { this.db.exec('ROLLBACK'); throw error; }
   }
-  create({ actor, title, brief }) {
+  create({ actor, title, brief, stage, why, nextStep }) {
     requireThat(actor === 'bob' || actor === 'owner', 'forbidden', 'Only BoB or owner can queue tasks');
     requireThat(this.db.prepare('SELECT count(*) AS count FROM tasks').get().count < POLICY.maxTasks, 'queue_limit', 'Queue capacity reached');
     const at = new Date(this.now()).toISOString();
     const task = { id: randomUUID(), title: text(title, 180, 'title'), brief: text(brief, 6000, 'brief'), status: 'queued', assignedTo: null, revision: 1, steps: 1, attempts: 0, createdAt: at, updatedAt: at, startedAt: null, leaseExpiresAt: null };
+    if (stage !== undefined) task.stage = text(stage, 240, 'stage');
+    if (why !== undefined) task.why = text(why, 2000, 'why');
+    if (nextStep !== undefined) task.nextStep = text(nextStep, 2000, 'nextStep');
     this.save(task);
     return { task, event: this.event(task, actor, 'task.created', { message: task.title, to: 'queued', assignedTo: null, leaseExpiresAt: null }) };
   }
@@ -90,6 +100,15 @@ export class HQStore {
     requireThat(!this.db.prepare('SELECT payload FROM tasks WHERE id != ?').all(task.id).map(r => JSON.parse(r.payload)).some(t => t.assignedTo === actor && ACTIVE.has(t.status) && Date.parse(t.leaseExpiresAt) > this.now() && this.now() - Date.parse(t.startedAt) <= POLICY.maxRuntimeMs && t.steps < POLICY.maxSteps), 'worker_busy', 'Worker already holds another live lease');
     task.leaseExpiresAt = new Date(this.now() + POLICY.leaseMs).toISOString();
     return { heartbeat: true, event: this.event(task, actor, 'task.heartbeat', { message: 'Worker reported active work', assignedTo: task.assignedTo, leaseExpiresAt: task.leaseExpiresAt, status: task.status }) };
+  }
+  progress(task, { actor, stage, why, nextStep }) {
+    requireThat(actor === 'bob' || actor === 'owner' || actor === task.assignedTo, 'forbidden', 'Only assigned worker or orchestrator can report task progress');
+    requireThat(!['awaiting_approval', 'failed', 'cancelled'].includes(task.status), 'invalid_transition', 'Task progress is sealed');
+    task.stage = text(stage, 240, 'stage');
+    task.why = text(why, 2000, 'why');
+    task.nextStep = text(nextStep, 2000, 'nextStep');
+    // A narrative does not advance the state machine or renew a worker lease.
+    return { event: this.event(task, actor, 'task.progress', { message: task.stage, stage: task.stage, why: task.why, nextStep: task.nextStep, assignedTo: task.assignedTo, status: task.status }) };
   }
   transition(task, { action, actor, assignedTo, reason }) {
     const previous = task.status;
@@ -139,7 +158,7 @@ export class HQStore {
     const kind = evidence.kind;
     requireThat(['artifact', 'code_review', 'security_review', 'design_review', 'test_result', 'note'].includes(kind), 'invalid_input', 'Unknown evidence kind');
     requireThat(!['cancelled', 'failed', 'awaiting_approval'].includes(task.status), 'invalid_transition', 'Task evidence is sealed');
-    if (kind === 'artifact') requireThat(['codex', 'designer', 'bob'].includes(actor) && task.status === 'running' && task.assignedTo === actor, 'forbidden', 'Only active implementer can attach implementation');
+    if (kind === 'artifact') requireThat(['codex', 'designer', 'bob', 'scout', 'accountant'].includes(actor) && task.status === 'running' && task.assignedTo === actor, 'forbidden', 'Only active assigned worker can attach an artifact');
     if (['code_review', 'security_review'].includes(kind)) requireThat(actor === 'security' && task.status === 'review', 'forbidden', 'Only security reviewer can submit a review');
     if (kind === 'design_review') requireThat(actor === 'designer', 'forbidden', 'Only designer can submit design review');
     if (kind === 'test_result') requireThat(actor === 'qa' && task.status === 'testing', 'forbidden', 'Only assigned QA can attach test results');
@@ -179,8 +198,8 @@ export class HQStore {
       const task = eligible.find(t => ACTIVE.has(t.status) && Date.parse(t.leaseExpiresAt) > now) || eligible.find(t => ACTIVE.has(t.status)) || eligible[0];
       const budgetExhausted = !!task && (task.steps >= POLICY.maxSteps || (task.startedAt && now - Date.parse(task.startedAt) > POLICY.maxRuntimeMs));
       const validLease = !!task?.leaseExpiresAt && Date.parse(task.leaseExpiresAt) > now && !budgetExhausted;
-      return { ...role, taskId: task?.id ?? null, taskTitle: task?.title ?? null, status: task ? (ACTIVE.has(task.status) && !validLease ? (budgetExhausted ? 'blocked' : 'stale') : task.status) : 'idle', taskStatus: task?.status ?? null, leaseExpiresAt: task?.leaseExpiresAt ?? null, isWorking: !!task && ACTIVE.has(task.status) && validLease, budgetExhausted };
+      return { ...role, taskId: task?.id ?? null, taskTitle: task?.title ?? null, stage: task?.stage ?? null, why: task?.why ?? null, nextStep: task?.nextStep ?? null, status: task ? (ACTIVE.has(task.status) && !validLease ? (budgetExhausted ? 'blocked' : 'stale') : task.status) : 'idle', taskStatus: task?.status ?? null, leaseExpiresAt: task?.leaseExpiresAt ?? null, isWorking: !!task && ACTIVE.has(task.status) && validLease, budgetExhausted };
     });
-    return { serverTime: new Date(now).toISOString(), revision: events[0]?.seq || 0, mode: 'local-read-only', workers, tasks, events, artifacts, policy: POLICY, costs: { apiCalls: usage.length, trackedApiCostUsd: usage.reduce((n,u) => n + u.costUsd, 0), inputTokens: usage.length ? usage.reduce((n,u) => n + u.inputTokens, 0) : null, outputTokens: usage.length ? usage.reduce((n,u) => n + u.outputTokens, 0) : null, sessionTokens: null, sessionCostUsd: null, sessionUsageStatus: 'unavailable', budgetUsd: POLICY.budgetUsd, paidExecutionEnabled: false, entries: usage } };
+    return { serverTime: new Date(now).toISOString(), revision: events[0]?.seq || 0, mode: 'local-read-only', workers, tasks, events, artifacts, operations: this.operations.state(), policy: POLICY, costs: { apiCalls: usage.length, trackedApiCostUsd: usage.reduce((n,u) => n + u.costUsd, 0), inputTokens: usage.length ? usage.reduce((n,u) => n + u.inputTokens, 0) : null, outputTokens: usage.length ? usage.reduce((n,u) => n + u.outputTokens, 0) : null, sessionTokens: null, sessionCostUsd: null, sessionUsageStatus: 'unavailable', budgetUsd: POLICY.budgetUsd, paidExecutionEnabled: false, entries: usage } };
   }
 }

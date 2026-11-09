@@ -5,10 +5,12 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const COLORS = { stone: '#b8b0a0', dark: '#152029', brass: '#b99b68', glow: '#ffd59a', blue: '#28bafb', glass: '#a0bed0' };
 const ROOMS = {
-  security: { x: -8, y: 0.25, z: 0, name: 'SECURITY', subtitle: 'REVIEW & TRUST', color: '#bb9cff' },
-  qa: { x: 7.8, y: 0.25, z: 0, name: 'QA LAB', subtitle: 'TEST & VERIFY', color: '#7be0c8' },
-  codex: { x: -7.5, y: 4.25, z: 0, name: 'CODEX', subtitle: 'DEVELOPMENT STUDIO', color: '#5bc6ff' },
-  designer: { x: 4.5, y: 4.25, z: 0, name: 'DESIGN', subtitle: 'INTERFACE & 3D', color: '#f2b475' },
+  scout: { x: -8, y: 0.25, z: 0, name: 'SCOUT', subtitle: 'RESEARCH & OPPORTUNITIES', color: '#edbc86' },
+  security: { x: 7.8, y: 0.25, z: 0, name: 'SECURITY', subtitle: 'REVIEW & TRUST', color: '#a7bdfa' },
+  qa: { x: 8, y: 4.25, z: 0, name: 'QA LAB', subtitle: 'TEST & VERIFY', color: '#7be0c8' },
+  codex: { x: -8, y: 4.25, z: 0, name: 'CODEX', subtitle: 'DEVELOPMENT STUDIO', color: '#5bc6ff' },
+  designer: { x: 0, y: 4.25, z: 0, name: 'DESIGN', subtitle: 'INTERFACE & 3D', color: '#b9a8ef' },
+  accountant: { x: -7.5, y: 8.25, z: 0, name: 'ACCOUNTING', subtitle: 'RECORDED FINANCIAL ACTIVITY', color: '#a8cf9b' },
   bob: { x: 5.5, y: 8.25, z: 0, name: 'BoB', subtitle: 'ORCHESTRATION', color: '#eff7ff' },
 };
 
@@ -58,7 +60,7 @@ function Sign({ text, sub = '', width = 6, height = 1.7, position, color = '#f1f
 function Glass({ position, scale, opacity = 0.07 }) {
   return <mesh position={position} scale={scale}>
     <boxGeometry />
-    <meshPhysicalMaterial color={COLORS.glass} transparent opacity={opacity} roughness={0.08} metalness={0.2} depthWrite={false} side={THREE.DoubleSide} />
+    <meshPhysicalMaterial color={COLORS.glass} transparent opacity={opacity} roughness={0.12} metalness={0.12} depthWrite={false} side={THREE.DoubleSide} />
   </mesh>;
 }
 
@@ -112,7 +114,13 @@ function Worker({ active, connected, reducedMotion, color = '#52768c' }) {
     <group ref={head} position={[0, 1.94, 0]}>
       <mesh castShadow scale={[0.2, 0.25, 0.21]}><sphereGeometry args={[1, 12, 10]} /><meshStandardMaterial color={'#bc9076'} roughness={0.8} /></mesh>
       <mesh position={[0, 0.11, -0.025]} scale={[0.205, 0.16, 0.205]}><sphereGeometry args={[1, 12, 8]} /><meshStandardMaterial color={'#2d2727'} roughness={0.9} /></mesh>
+      <mesh position={[0, -0.015, 0.208]} scale={[0.036, 0.055, 0.048]}><sphereGeometry args={[1, 7, 6]} /><meshStandardMaterial color={'#bd9177'} roughness={0.8} /></mesh>
+      {[-1, 1].map(side => <group key={side}>
+        <mesh position={[side * 0.069, 0.035, 0.191]} scale={[0.023, 0.015, 0.012]}><sphereGeometry args={[1, 6, 5]} /><meshStandardMaterial color={'#283542'} /></mesh>
+        <mesh position={[side * 0.197, -0.01, 0]} scale={[0.031, 0.057, 0.034]}><sphereGeometry args={[1, 7, 6]} /><meshStandardMaterial color={'#b68a72'} roughness={0.85} /></mesh>
+      </group>)}
     </group>
+    <mesh position={[0, 1.66, 0]}><cylinderGeometry args={[0.085, 0.09, 0.17, 8]} /><meshStandardMaterial color={'#bc9076'} roughness={0.8} /></mesh>
     {[-1, 1].map(side => <group key={side} position={[side * 0.34, 1.53, 0.02]} rotation={[-0.6, 0, side * 0.08]} ref={side === -1 ? armL : armR}>
       <mesh position={[0, -0.23, 0]} castShadow><capsuleGeometry args={[0.095, 0.32, 4, 8]} /><meshStandardMaterial color={color} /></mesh>
       <group position={[0, -0.43, 0]} rotation={[-0.8, 0, 0]}>
@@ -179,7 +187,7 @@ function Desk({ id, worker, selected, onSelect, connected, reducedMotion }) {
     <mesh position={[1.1, 1.23, 1]}><cylinderGeometry args={[0.09, 0.07, 0.2, 12]} /><meshStandardMaterial color={'#e2dbce'} roughness={0.4} /></mesh>
     <Box position={[1.75, 1.16, 0.9]} scale={[0.5, 0.055, 0.38]} color={'#516577'} />
     <Chair position={[0, 0, 2.1]} />
-    <Worker active={worker.active} connected={connected} reducedMotion={reducedMotion} color={id === 'designer' ? '#b98c6e' : id === 'bob' ? '#344352' : '#456a80'} />
+    <Worker active={worker.active} connected={connected} reducedMotion={reducedMotion} color={id === 'designer' ? '#b98c6e' : id === 'bob' ? '#344352' : id === 'accountant' ? '#667d62' : id === 'scout' ? '#797462' : '#456a80'} />
     <Strip position={[0, 0.1, 3.7]} scale={[selected || hovered ? 5 : 1.7, 0.025, 0.04]} color={selected || hovered ? room.color : stateColor(worker)} intensity={selected || hovered ? 3 : 1.5} />
     <Sign text={room.name} sub={room.subtitle} position={[0, 3.19, 4.18]} width={4.2} height={1.2} color={room.color} />
     <Plant position={[2.8, 0, 1.8]} size={0.85} />
@@ -217,20 +225,21 @@ function Architecture({ workers, onSelect, selectedRole, connected, reducedMotio
         {[-9, -3, 3, 9].map(x => <Strip key={x} position={[x, y + 3.72, 0]} scale={[3.5, 0.025, 0.035]} intensity={2} />)}
       </>}
     </group>)}
-    {[-12.25, -4.4, 3.9, 12.25].map(x => <group key={x}>
+    {[-12.25, -4.15, 4.15, 12.25].map(x => <group key={x}>
       <Box position={[x, 6.1, 4.45]} scale={[0.14, 12, 0.16]} color={'#303d43'} metalness={0.7} />
       <Strip position={[x + 0.085, 5.9, 4.52]} scale={[0.025, 3.35, 0.025]} color={COLORS.blue} intensity={3.2} />
     </group>)}
     {[0, 4, 8].map(y => <group key={y}>
-      <Glass position={[0, y + 1.98, 4.58]} scale={[24.8, 3.5, 0.035]} opacity={0.028} />
+      <Glass position={[0, y + 1.98, 4.58]} scale={[24.8, 3.5, 0.035]} opacity={0.05} />
       <Glass position={[12.35, y + 1.95, 0]} scale={[0.025, 3.6, 8.8]} opacity={0.1} />
       <Glass position={[-12.35, y + 1.95, 0]} scale={[0.025, 3.6, 8.8]} opacity={0.1} />
       <Box position={[0, y + 0.7, 4.63]} scale={[25, 0.04, 0.06]} color={'#788e97'} metalness={0.9} />
       <Box position={[0, y + 3.6, 4.63]} scale={[25, 0.045, 0.06]} color={'#788e97'} metalness={0.9} />
+      {[-8.25, 0, 8.25].map(x => <Box key={x} position={[x, y + 2, 4.62]} scale={[0.045, 3.6, 0.07]} color={'#556b76'} metalness={0.75} />)}
     </group>)}
     {/* Room dividers leave a central circulation spine and preserve clear sightlines. */}
     {[-4.1, 3.9].map(x => <Glass key={x} position={[x, 2.1, 0]} scale={[0.08, 3.65, 8.6]} opacity={0.08} />)}
-    <Glass position={[-1.3, 6.1, 0]} scale={[0.06, 3.65, 8.6]} opacity={0.08} />
+    {[-4.1, 4.1].map(x => <Glass key={x} position={[x, 6.1, 0]} scale={[0.06, 3.65, 8.6]} opacity={0.08} />)}
     <Glass position={[0.2, 10.1, 0]} scale={[0.06, 3.65, 8.6]} opacity={0.08} />
     {/* Oak battens, architectural wall panels, and a real stair route between floors. */}
     {Array.from({ length: 29 }, (_, i) => <Box key={i} position={[-11.8 + i * 0.85, 6.3, -4.16]} scale={[0.055, 11.3, 0.12]} color={'#856c4d'} roughness={0.7} />)}
@@ -247,11 +256,10 @@ function Architecture({ workers, onSelect, selectedRole, connected, reducedMotio
     <Strip position={[0, 0.31, 2.59]} scale={[4.1, 0.035, 0.035]} />
     <Sign brand text="AmericanSites" position={[0, 2.7, -0.9]} width={4.8} height={1.6} />
     <CeilingLight position={[0, 3.25, 2]} radius={1.25} />
-    <Sofa position={[-8.5, 8.25, 2.3]} />
-    <Sofa position={[-8.5, 8.25, -0.3]} rotation={[0, Math.PI, 0]} />
-    <Box position={[-8.5, 8.8, 1.05]} scale={[2.9, 0.1, 1.1]} color={'#7d6951'} roughness={0.4} />
-    <Box position={[-8.5, 8.55, 1.05]} scale={[1.3, 0.5, 0.7]} color={'#252f35'} />
-    <Sign text="STRATEGY" sub="PLAN / BUILD / VERIFY" position={[-7.3, 11.4, -4.02]} width={6.8} height={1.45} color={'#b2ddf5'} />
+    <Sofa position={[-8, 8.25, -3.25]} />
+    <Box position={[-2.3, 8.85, -2.3]} scale={[1.3, 1.2, 0.8]} color={'#78684f'} roughness={0.65} />
+    {[9.15, 9.45, 9.75].map(y => <Box key={y} position={[-2.3, y, -2.3]} scale={[1.5, 0.04, 0.9]} color={'#aa9674'} />)}
+    <Sign text="OPERATIONS" sub="PLAN / BUILD / VERIFY" position={[-7.3, 11.4, -4.02]} width={6.8} height={1.45} color={'#b2ddf5'} />
     <CeilingLight position={[-8.5, 11.55, 1]} radius={1.5} />
     <CeilingLight position={[5.4, 11.55, 1]} radius={1.2} />
     <Plant position={[-11.4, 8.25, 2]} size={1.3} palm />
@@ -287,6 +295,8 @@ function Supercar() {
       <Strip position={[side * .9, .76, 2.66]} scale={[.48,.035,.04]} color={'#9adbff'} intensity={4} />
       <Box position={[side * 1.26, .43, 0]} scale={[.09,.09,3.75]} color={'#1d313a'} metalness={.5} />
       <Box position={[side * 1.25, .85, -.7]} scale={[.035,.33,.62]} color={'#18303a'} rotation={[.18,0,0]} />
+      <Box position={[side * 1.275, .77, .1]} scale={[.012,.014,1.65]} color={'#576b78'} />
+      <Box position={[side * 1.28, .6, -.7]} scale={[.012,.35,.015]} color={'#576b78'} />
       <Box position={[side * 1.28, 1.09, .45]} scale={[.3,.1,.18]} color={'#dfe5e8'} />
       {[-1.65, 1.65].map(z => <group key={z} position={[side * 1.25,.49,z]} rotation={[0,0,Math.PI/2]}>
         <mesh castShadow><cylinderGeometry args={[.49,.49,.28,24]} /><meshStandardMaterial color={'#11181e'} roughness={.9} /></mesh>

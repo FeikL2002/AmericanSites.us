@@ -1,0 +1,102 @@
+{
+  "recordedAt": "2026-11-09T10:18:00.826Z",
+  "scope": "Phase 2 implementation and acceptance tests; no runtime data",
+  "files": [
+    {
+      "path": "package-lock.json",
+      "sha256": "46504ce67aa79f071f070d0b75eee508ef39bfc877685540b6e7a4f6c3d27484"
+    },
+    {
+      "path": "package.json",
+      "sha256": "ca5c694efd076b69f949e8a23e45c97e2c39a22a1f7f9df4295c9ddf7d9462fc"
+    },
+    {
+      "path": "public/prototypes/practice-desk/app.mjs",
+      "sha256": "16eb313b1938782ec1c27b89326c854bd84c8ba9681644549f772a8853f3ba84"
+    },
+    {
+      "path": "public/prototypes/practice-desk/domain.mjs",
+      "sha256": "82e6b1733fbb15cabdd0834578da3bdd8922b789be61fa1db470dcafd746458c"
+    },
+    {
+      "path": "public/prototypes/practice-desk/index.html",
+      "sha256": "0f72135c5f773d56f4e9b02c04397e14d40db6428618166a89c9cb5092ef3f96"
+    },
+    {
+      "path": "public/prototypes/practice-desk/styles.css",
+      "sha256": "7cbe2ef2923241ea52f6ab3266de62aabc2903145dd00573e6f1cfe9e89e7ac4"
+    },
+    {
+      "path": "scripts/dev.mjs",
+      "sha256": "12f590e8ec97b7269cb1eb179c7c98b3e04e36953822e390c355c568c73d0e5f"
+    },
+    {
+      "path": "scripts/hq.mjs",
+      "sha256": "7fa321ee539d66c157e54a31628eaab38656a4e6b2e53b765d15f4d67ecb7b15"
+    },
+    {
+      "path": "server/index.mjs",
+      "sha256": "ecafef0d47aae2edab36ecbd4acfb380f626c2baaf1ee05776c30c8f954366b5"
+    },
+    {
+      "path": "server/operations.mjs",
+      "sha256": "f1d956025397741d8b1e7441c5d11a51d548fa24e63fc5c3155a0331f037190c"
+    },
+    {
+      "path": "server/store.mjs",
+      "sha256": "623488a76425cdf8d4f5d06ac54f1754b084ab30f458e7fac0c2deceb6511e0f"
+    },
+    {
+      "path": "src/App.jsx",
+      "sha256": "12d78862ff878303b4e6d083f463aa5c50d61d359b7f452d144f2e8e2a4e6914"
+    },
+    {
+      "path": "src/OfficeFallback.jsx",
+      "sha256": "d34843392555ed17df6cd7d5bb02c1153fd12e88c2b4d31879efb7c3a7ffa303"
+    },
+    {
+      "path": "src/OfficeScene.jsx",
+      "sha256": "e6b6b0241cbde059e8b97b0890ec4b5292bc96380268490876f6e63a818fbd1f"
+    },
+    {
+      "path": "src/fallback.css",
+      "sha256": "4d02ebb762680670a359f737ea5897768b5fda914545381a99b153ecf2560d08"
+    },
+    {
+      "path": "src/main.jsx",
+      "sha256": "853b0c8db7ec4452e71d70b8f84e90ca8c9c9ac4c7dbbc6dcb33dbb3ab963861"
+    },
+    {
+      "path": "src/styles.css",
+      "sha256": "d56ddd65a1209a03e8fd3a2db620ba646c6989a6bfdac20722401f74c1580422"
+    },
+    {
+      "path": "src/workerState.mjs",
+      "sha256": "42a5a8344d66d2402785ebbf4f8fe6bc3b943fe33ec7dab7641c46f30481c1b1"
+    },
+    {
+      "path": "tests/backend.test.mjs",
+      "sha256": "d5ab0a594b1111b4b8a9472e4f54ff23056e295fc04b7add289899bf07aed09d"
+    },
+    {
+      "path": "tests/operations.test.mjs",
+      "sha256": "3e853aa58b7b63bc6838a749951c3c36a91b68ff012f895cd1a2623f0b786533"
+    },
+    {
+      "path": "tests/prototype.test.mjs",
+      "sha256": "f49edc6ebf87c927ae168d9834bc5908cf6a842087ef8b05590ba032cf2fd2b7"
+    },
+    {
+      "path": "tests/website.test.mjs",
+      "sha256": "7d7daa189f97d07d3cd77643c9837d46625116fb7fc634d2ddc3856d2b1f8f11"
+    },
+    {
+      "path": "tests/worker-state.test.mjs",
+      "sha256": "155fa73e2280d71bf1792ff700a275cb29d35570dd8193aadf117a7e5a492789"
+    },
+    {
+      "path": "vite.config.js",
+      "sha256": "f553975d01be663ff4a59f2cde2df10cf18b1edc2ccd9ad1a70479229fa3dceb"
+    }
+  ]
+}

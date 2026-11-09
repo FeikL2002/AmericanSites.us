@@ -1,0 +1,73 @@
+{
+  "artifact": "Practice Desk",
+  "stage": "checkpoint_2_functional_concept",
+  "completedAt": "2026-11-09T10:14:59.102Z",
+  "scope": "Independent unsent workflow concept. Not affiliated with Riggs Wrestling Academy. Anonymous fictional data only.",
+  "sources": [
+    {
+      "url": "https://riggswrestlingacademy.com/registration",
+      "verifiedBy": "Scout role; evidence/scout-phase2.json",
+      "usedFor": [
+        "Registration-before-practice process",
+        "Published $10 cash-only drop-in example"
+      ]
+    }
+  ],
+  "checkpoints": [
+    {
+      "stage": "checkpoint_1_session_shell",
+      "completedAt": "2026-11-09T10:07:31Z",
+      "indexSha256": "fc5facbccf56c864267c11facf14d926ac2d4da4449ceabe8611d9874a6f14a5",
+      "observed": "Responsive interface shell and working sample session creation; roster controls explicitly marked in progress."
+    },
+    {
+      "stage": "checkpoint_2_functional_concept",
+      "observed": "Session setup, anonymous roster, registration gate, check-in/out, fictional cash/check/unpaid records, derived totals, guarded clear, CSV export and storage fallback implemented."
+    }
+  ],
+  "files": [
+    {
+      "path": "public/prototypes/practice-desk/index.html",
+      "sha256": "0f72135c5f773d56f4e9b02c04397e14d40db6428618166a89c9cb5092ef3f96"
+    },
+    {
+      "path": "public/prototypes/practice-desk/domain.mjs",
+      "sha256": "82e6b1733fbb15cabdd0834578da3bdd8922b789be61fa1db470dcafd746458c"
+    },
+    {
+      "path": "public/prototypes/practice-desk/app.mjs",
+      "sha256": "16eb313b1938782ec1c27b89326c854bd84c8ba9681644549f772a8853f3ba84"
+    },
+    {
+      "path": "public/prototypes/practice-desk/styles.css",
+      "sha256": "7cbe2ef2923241ea52f6ab3266de62aabc2903145dd00573e6f1cfe9e89e7ac4"
+    }
+  ],
+  "developerValidation": {
+    "syntax": "PASS: node --check app.mjs and domain.mjs; inline bundle parsed with vm.Script",
+    "domainSmoke": "PASS: immutable add, check-in, sample cash totals, stored-data parse and CSV disclaimer",
+    "sourceParity": "PASS: inline classic script exactly equals domain source without exports plus app source without import, wrapped in a strict IIFE; inline CSS equals styles.css",
+    "browser": "BLOCKED before opening a page: Chromium process_singleton_posix socket() Operation not permitted. No browser interaction or screenshot result claimed.",
+    "independentQA": "Pending separate QA role report"
+  },
+  "isolation": {
+    "networkRequests": "None in application code",
+    "paymentProcessing": "None",
+    "externalSubmissions": "None",
+    "realParticipantFields": "None; generated DEMO-NNN IDs only",
+    "accounting": "Sample totals do not write to AmericanSites accounting",
+    "storage": "Dedicated localStorage key when available; explicit page-memory fallback in opaque-origin iframe",
+    "iframeRecommendation": "sandbox=\"allow-scripts\" only; parent supplies restrictive CSP"
+  },
+  "deterministicBundle": {
+    "css": "Replace GENERATED STYLES marker contents with <style> plus styles.css.trimEnd() plus </style>.",
+    "script": "Read domain.mjs, remove /^export /gm; read app.mjs, remove first /^import .*?;\\n/; trim trailing whitespace; concatenate strict IIFE prefix + domain + two newlines + app + IIFE suffix between GENERATED SCRIPT markers."
+  },
+  "limitations": [
+    "Buying intent, workflow need and commercial fit remain unverified.",
+    "Generic check-recording option is explicitly labeled; published club drop-in policy says cash only.",
+    "Single sample session, at most 100 anonymous participants.",
+    "Opaque embedded preview does not persist across reload; download may require opening the concept directly.",
+    "No production data, client affiliation, real payments, outreach or live deployment are implied."
+  ]
+}

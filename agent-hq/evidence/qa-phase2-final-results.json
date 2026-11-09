@@ -1,0 +1,41 @@
+{
+  "role": "qa",
+  "taskId": "facd537b-a5cf-4071-8e01-7b8553716314",
+  "recordedAt": "2026-11-09T10:24:42.333Z",
+  "manifestPath": "evidence/phase2-final-manifest.json",
+  "manifestSha256": "10e4dc39d9a5be8643f11e2aa6dadb644bbb90e90c3b8d7e6716cfc17e38904b",
+  "manifestFiles": 24,
+  "hashesMatchedBefore": true,
+  "hashesMatchedAfter": true,
+  "commands": [
+    {
+      "command": "npm test",
+      "startedAt": "2026-11-09T10:24:38.667Z",
+      "finishedAt": "2026-11-09T10:24:39.514Z",
+      "durationMs": 846.666841,
+      "exitCode": 0,
+      "stdout": "\n> americansites-agent-hq@0.1.0 test\n> node --test tests/*.test.mjs\n\n✔ empty store has seven idle workers, unknown session costs, and disabled sensitive adapters (4.827976ms)\n✔ full evidence-backed handoff stops at owner approval with append-only events (8.358489ms)\n✔ rejects unauthorized actors and impossible transitions (1.708655ms)\n✔ revision CAS rejects stale writers without extra events (1.264253ms)\n✔ idempotency returns original result and rejects key reuse with altered input (1.363814ms)\n✔ implementation, review, matching artifact digest and test result are mandatory (2.61645ms)\n✔ a later failing result supersedes an earlier passing result (2.400051ms)\n✔ worker leases expire without inventing task completion and handoffs require a heartbeat (2.604892ms)\n✔ attempt limits block endless retries (1.662636ms)\n✔ step limit and runtime limit fail closed while retaining the stop path (5.474054ms)\n✔ rejects unsafe artifact paths, malformed digest, missing real test fields and negative usage (2.039587ms)\n✔ provider receipts are distinct from unavailable session usage and deduplicated (0.860722ms)\n✔ SQLite task, events and idempotency survive a closed and reopened database (1.516354ms)\n✔ HTTP serves no-store state only; mutation attempts cannot alter the database (46.96285ms)\n✔ a worker cannot start two concurrent jobs and live work takes display priority (11.628747ms)\n✔ a later changes-requested review supersedes a passing review (2.022511ms)\n✔ new events record assigned roles and real heartbeat leases for conservative replay (1.875028ms)\n✔ pending review handoffs cannot obtain two simultaneous leases for one reviewer (2.707748ms)\n✔ empty accounting is unknown imported activity, not fabricated zero sales (4.10992ms)\n✔ invoices are not income; linked receipts reduce outstanding and refunds reduce collected (4.725511ms)\n✔ rejects negative/fractional/unsafe cents, invalid dates and non-cent currencies (1.883751ms)\n✔ safe individual amounts cannot overflow aggregate totals (1.377454ms)\n✔ currencies remain separate and duplicate receipts are scoped to provider/account (10.351666ms)\n✔ refund and invoice links cannot exceed recorded amounts or cross currencies/accounts (3.218361ms)\n✔ accounting commands are idempotent and cannot edit or delete posted receipts (1.811601ms)\n✔ sanitized snapshot import retains only explicit fields and never creates revenue from leads (2.238398ms)\n✔ invalid snapshot atomically rolls back and conflicting immutable transactions fail clearly (1.842448ms)\n✔ company updates enforce roles/revisions and retain imported opt-outs (1.224654ms)\n✔ later imported opt-outs upgrade existing companies and cannot be cleared by reimport (1.454592ms)\n✔ project previews require an existing allowlisted local HTML file and evidence for completion (1.9232ms)\n✔ plain-language progress records intent without advancing state or inventing activity (3.315377ms)\n✔ operations and bookkeeping persist across process-store restarts in the private SQLite file (2.34964ms)\n✔ read-only SSE sends real operations revisions and does not accept mutation (541.687199ms)\n✔ practice concept starts empty with an explicit sample fee and a valid calendar date (2.401955ms)\n✔ practice concept rejects missing labels and non-integer or out-of-range money (0.357602ms)\n✔ roster additions and participant edits leave their input records unchanged (0.461037ms)\n✔ roster accepts anonymous sample IDs only and rejects duplicates (0.532876ms)\n✔ sample roster is capped at 100 and gaps produce unused IDs (4.272235ms)\n✔ check-in requires reviewed registration and cannot silently clear registration while inside (0.510302ms)\n✔ payment edits preserve attendance and registration; clearing payment removes its amount (0.202947ms)\n✔ invalid updates, amounts and payment methods cannot enter sample accounting (0.508129ms)\n✔ cash/check totals are exact cents and overpayment never hides another participant’s outstanding balance (0.353735ms)\n✔ a valid sample session survives serialization with defensive copies (0.35651ms)\n✔ malformed storage, duplicate IDs, invalid registration and personal fields cannot pollute restored sample data (0.367866ms)\n✔ CSV is labeled demo-only and exports recorded amounts as decimal dollars (0.352603ms)\n✔ CSV quotes commas, quotes and newlines and neutralizes spreadsheet-formula labels (0.345934ms)\n✔ prototype explains affiliation and sample-money limits and has no submission or payment transports (0.940083ms)\n✔ existing sample records require explicit clearing before replacement and storage failure is disclosed (0.2116ms)\n✔ first focusable element lets keyboard users skip repeated navigation (1.381671ms)\n✔ skip target is the unique programmatically focusable main landmark (0.458183ms)\n✔ skip link has local focus visibility styling above the sticky header (0.855865ms)\n✔ empty history clears all live task metadata and never invents workers or tasks (1.660663ms)\n✔ creation and assignment do not make the orchestrator or assignee work (0.317821ms)\n✔ start activates only the recorded developer with a fresh lease (0.348217ms)\n✔ running → review → testing → approval follows ownership, not the event actor (0.293204ms)\n✔ leases expire using the selected historical event time, without changing task outcome (0.181184ms)\n✔ a former worker heartbeat cannot start the next worker or renew the old lease (0.163277ms)\n✔ evidence and unknown events alone never create a task or simulate completion (0.15846ms)\n✔ malformed timestamps fail closed for work animation (0.134293ms)\n✔ runtime and step limits stop replay work animation (0.206062ms)\n✔ input data is not mutated and duplicate event identities are ignored (0.313414ms)\nℹ tests 61\nℹ suites 0\nℹ pass 61\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 672.799606\n",
+      "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "command": "npm run build",
+      "startedAt": "2026-11-09T10:24:39.514Z",
+      "finishedAt": "2026-11-09T10:24:42.332Z",
+      "durationMs": 2817.927068,
+      "exitCode": 0,
+      "stdout": "\n> americansites-agent-hq@0.1.0 build\n> vite build\n\nvite v7.3.7 building client environment for production...\ntransforming...\n✓ 53 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                     0.50 kB │ gzip:   0.33 kB\ndist/assets/index-BXHXEcr_.css     18.35 kB │ gzip:   4.95 kB\ndist/assets/index-EfHgDDOL.js   1,211.01 kB │ gzip: 340.85 kB\n✓ built in 2.52s\n",
+      "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n\n(!) Some chunks are larger than 1200 kB after minification. Consider:\n- Using dynamic import() to code-split the application\n- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks\n- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.\n"
+    }
+  ],
+  "browserEvidence": {
+    "provenance": "Root reported direct CUA observations; not independently repeated by QA child.",
+    "verified": [
+      "Sample session creation",
+      "Unregistered sample check-in disabled",
+      "Registration then check-in yields one on mat",
+      "Cash sample $10 yields $10 total and $0 outstanding"
+    ],
+    "unverified": "CSV browser download wait timed out. Do not claim browser download verification. Pure CSV tests passed."
+  },
+  "limits": "Automated checks use synthetic/temporary data; no live database mutation. No external form submission, payment, model API, outreach or deployment executed."
+}
