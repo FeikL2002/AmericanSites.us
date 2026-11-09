@@ -1,0 +1,15 @@
+{
+  "task": "website-skip-to-main",
+  "role": "qa",
+  "phase": "after-implementation",
+  "startedAt": "2026-11-09T08:13:28.696Z",
+  "finishedAt": "2026-11-09T08:13:28.851Z",
+  "command": "node --test tests/website.test.mjs",
+  "exitCode": 0,
+  "durationMs": 154.46930700000001,
+  "sourcePath": "AmericanSites  \"Live\"/index.html",
+  "sourceSha256": "10e373b2bdaaf1042ebdc0bd761165446a6af1c06df0976b092fbedb4c16eccc",
+  "stdout": "✔ first focusable element lets keyboard users skip repeated navigation (0.99093ms)\n✔ skip target is the unique programmatically focusable main landmark (0.266454ms)\n✔ skip link has local focus visibility styling above the sticky header (0.698087ms)\nℹ tests 3\nℹ suites 0\nℹ pass 3\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 82.432391\n",
+  "stderr": "",
+  "scope": "Static source acceptance only; browser keyboard verification is separate. No external forms or payments were exercised."
+}

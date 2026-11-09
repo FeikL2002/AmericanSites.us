@@ -1,0 +1,248 @@
+{
+  "serverTime": "2026-11-09T08:14:03.413Z",
+  "revision": 9,
+  "mode": "local-read-only",
+  "workers": [
+    {
+      "id": "bob",
+      "name": "BoB",
+      "role": "Orchestrator",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "taskTitle": "Add keyboard skip-to-main navigation",
+      "status": "awaiting_approval",
+      "taskStatus": "awaiting_approval",
+      "leaseExpiresAt": null,
+      "isWorking": false,
+      "budgetExhausted": false
+    },
+    {
+      "id": "codex",
+      "name": "Codex",
+      "role": "Developer",
+      "taskId": null,
+      "taskTitle": null,
+      "status": "idle",
+      "taskStatus": null,
+      "leaseExpiresAt": null,
+      "isWorking": false,
+      "budgetExhausted": false
+    },
+    {
+      "id": "designer",
+      "name": "Studio",
+      "role": "UI / 3D designer",
+      "taskId": null,
+      "taskTitle": null,
+      "status": "idle",
+      "taskStatus": null,
+      "leaseExpiresAt": null,
+      "isWorking": false,
+      "budgetExhausted": false
+    },
+    {
+      "id": "qa",
+      "name": "QA",
+      "role": "QA tester",
+      "taskId": null,
+      "taskTitle": null,
+      "status": "idle",
+      "taskStatus": null,
+      "leaseExpiresAt": null,
+      "isWorking": false,
+      "budgetExhausted": false
+    },
+    {
+      "id": "security",
+      "name": "Sentinel",
+      "role": "Security reviewer",
+      "taskId": null,
+      "taskTitle": null,
+      "status": "idle",
+      "taskStatus": null,
+      "leaseExpiresAt": null,
+      "isWorking": false,
+      "budgetExhausted": false
+    }
+  ],
+  "tasks": [
+    {
+      "id": "b65c2958-85df-426c-ad05-124b834c8233",
+      "title": "Add keyboard skip-to-main navigation",
+      "brief": "Improve the AmericanSites repository homepage for keyboard users. Add a first-focus skip link with local visible-focus CSS and a focusable main target. Preserve forms and payment markup. QA must pass all three acceptance checks. This modifies the historical repository snapshot, not the live deployment.",
+      "status": "awaiting_approval",
+      "assignedTo": "bob",
+      "revision": 11,
+      "steps": 9,
+      "attempts": 1,
+      "createdAt": "2026-11-09T08:11:52.277Z",
+      "updatedAt": "2026-11-09T08:14:03.412Z",
+      "startedAt": "2026-11-09T08:11:52.280Z",
+      "leaseExpiresAt": null
+    }
+  ],
+  "events": [
+    {
+      "id": "64460778-f91c-43ba-8c9a-01f71a8ca85c",
+      "at": "2026-11-09T08:14:03.412Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "qa",
+      "type": "task.request_approval",
+      "from": "testing",
+      "to": "awaiting_approval",
+      "message": "testing → awaiting_approval",
+      "seq": 9
+    },
+    {
+      "id": "3595750c-0afe-46a6-86f1-46d6e29571ba",
+      "at": "2026-11-09T08:14:03.409Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "qa",
+      "type": "evidence.added",
+      "message": "QA: 3 of 3 keyboard acceptance checks passed",
+      "evidenceIds": [
+        "fe289bab-56da-4ab0-b0cd-6b69590d43f1"
+      ],
+      "seq": 8
+    },
+    {
+      "id": "e8f2a1d7-ca54-41ea-99b1-89345a74e20a",
+      "at": "2026-11-09T08:13:12.178Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "security",
+      "type": "task.test",
+      "from": "review",
+      "to": "testing",
+      "message": "review → testing",
+      "seq": 7
+    },
+    {
+      "id": "f0c5aeb1-14a0-40ec-8d0b-39398f4e4b95",
+      "at": "2026-11-09T08:13:12.176Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "security",
+      "type": "evidence.added",
+      "message": "Security review: scoped keyboard patch",
+      "evidenceIds": [
+        "2f511f26-13d4-4223-8f9d-51ce51e2d8de"
+      ],
+      "seq": 6
+    },
+    {
+      "id": "e7693191-6f46-464a-b1dd-33754adf0f06",
+      "at": "2026-11-09T08:12:32.391Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "codex",
+      "type": "task.review",
+      "from": "running",
+      "to": "review",
+      "message": "running → review",
+      "seq": 5
+    },
+    {
+      "id": "1bc37a89-a11c-4d8b-be0e-9d6e85df3722",
+      "at": "2026-11-09T08:12:32.386Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "codex",
+      "type": "evidence.added",
+      "message": "Keyboard accessibility patch",
+      "evidenceIds": [
+        "b1a3c571-bd1a-43da-bcbd-444a50f12a99"
+      ],
+      "seq": 4
+    },
+    {
+      "id": "6bd0b346-16c3-439a-be22-9d5d9483cf4c",
+      "at": "2026-11-09T08:11:52.280Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "codex",
+      "type": "task.start",
+      "from": "assigned",
+      "to": "running",
+      "message": "assigned → running",
+      "seq": 3
+    },
+    {
+      "id": "aceeb4cd-666f-496b-bc41-409c79aef73c",
+      "at": "2026-11-09T08:11:52.279Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "bob",
+      "type": "task.assign",
+      "from": "queued",
+      "to": "assigned",
+      "message": "queued → assigned",
+      "seq": 2
+    },
+    {
+      "id": "2e107613-d22d-4557-af86-20230e658210",
+      "at": "2026-11-09T08:11:52.278Z",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "bob",
+      "type": "task.created",
+      "message": "Add keyboard skip-to-main navigation",
+      "to": "queued",
+      "seq": 1
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "b1a3c571-bd1a-43da-bcbd-444a50f12a99",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "codex",
+      "kind": "artifact",
+      "title": "Keyboard accessibility patch",
+      "summary": "Codex added the first keyboard skip link and focus target in the historical homepage. Implementation report: evidence/website-implementation.json.",
+      "at": "2026-11-09T08:12:32.385Z",
+      "path": "AmericanSites  \"Live\"/index.html",
+      "sha256": "10e373b2bdaaf1042ebdc0bd761165446a6af1c06df0976b092fbedb4c16eccc"
+    },
+    {
+      "id": "2f511f26-13d4-4223-8f9d-51ce51e2d8de",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "security",
+      "kind": "code_review",
+      "title": "Security review: scoped keyboard patch",
+      "summary": "Independently reviewed full diff. Only local skip-link styles, first-body anchor and tabindex changed. No scripts, form actions, Stripe configuration, requests, dependencies or permissions changed.",
+      "at": "2026-11-09T08:13:12.175Z",
+      "artifactSha256": "10e373b2bdaaf1042ebdc0bd761165446a6af1c06df0976b092fbedb4c16eccc",
+      "verdict": "passed"
+    },
+    {
+      "id": "fe289bab-56da-4ab0-b0cd-6b69590d43f1",
+      "taskId": "b65c2958-85df-426c-ad05-124b834c8233",
+      "actor": "qa",
+      "kind": "test_result",
+      "title": "QA: 3 of 3 keyboard acceptance checks passed",
+      "summary": "Independent QA executed the acceptance suite after handoff. Static checks passed: first focusable skip link, focusable main target, local visible focus CSS. Browser keyboard check pending. Actual output: evidence/website-qa.json.",
+      "at": "2026-11-09T08:14:03.409Z",
+      "path": "evidence/website-qa.json",
+      "artifactSha256": "10e373b2bdaaf1042ebdc0bd761165446a6af1c06df0976b092fbedb4c16eccc",
+      "command": "node --test tests/website.test.mjs",
+      "exitCode": 0,
+      "durationMs": 154.46930700000001
+    }
+  ],
+  "policy": {
+    "maxSteps": 32,
+    "maxAttempts": 2,
+    "maxRuntimeMs": 3600000,
+    "leaseMs": 120000,
+    "maxTasks": 100,
+    "paidExecutionEnabled": false,
+    "budgetUsd": 0,
+    "productionEnabled": false,
+    "outreachEnabled": false,
+    "destructiveActionsEnabled": false
+  },
+  "costs": {
+    "apiCalls": 0,
+    "trackedApiCostUsd": 0,
+    "inputTokens": null,
+    "outputTokens": null,
+    "sessionTokens": null,
+    "sessionCostUsd": null,
+    "sessionUsageStatus": "unavailable",
+    "budgetUsd": 0,
+    "paidExecutionEnabled": false,
+    "entries": []
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.data/
+.env*
+!.env.example
+.netlify/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+data/

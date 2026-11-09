@@ -1,0 +1,100 @@
+{
+  "role": "qa",
+  "kind": "independent-final-verification",
+  "recordedAt": "2026-11-09T08:17:16.064Z",
+  "commands": [
+    {
+      "command": "npm test",
+      "startedAt": "2026-11-09T08:17:12.267Z",
+      "finishedAt": "2026-11-09T08:17:12.678Z",
+      "durationMs": 410.259427,
+      "exitCode": 0,
+      "stdout": "\n> americansites-agent-hq@0.1.0 test\n> node --test tests/*.test.mjs\n\n✔ empty store has five idle workers, unknown session costs, and disabled sensitive adapters (3.397442ms)\n✔ full evidence-backed handoff stops at owner approval with append-only events (7.244033ms)\n✔ rejects unauthorized actors and impossible transitions (1.426719ms)\n✔ revision CAS rejects stale writers without extra events (1.303543ms)\n✔ idempotency returns original result and rejects key reuse with altered input (1.712622ms)\n✔ implementation, review, matching artifact digest and test result are mandatory (2.361244ms)\n✔ a later failing result supersedes an earlier passing result (1.902229ms)\n✔ worker leases expire without inventing task completion and handoffs require a heartbeat (1.971584ms)\n✔ attempt limits block endless retries (1.623036ms)\n✔ step limit and runtime limit fail closed while retaining the stop path (6.938271ms)\n✔ rejects unsafe artifact paths, malformed digest, missing real test fields and negative usage (2.82772ms)\n✔ provider receipts are distinct from unavailable session usage and deduplicated (0.874333ms)\n✔ SQLite task, events and idempotency survive a closed and reopened database (1.375983ms)\n✔ HTTP serves no-store state only; mutation attempts cannot alter the database (41.130976ms)\n✔ a worker cannot start two concurrent jobs and live work takes display priority (7.383345ms)\n✔ a later changes-requested review supersedes a passing review (1.503106ms)\n✔ new events record assigned roles and real heartbeat leases for conservative replay (1.198184ms)\n✔ pending review handoffs cannot obtain two simultaneous leases for one reviewer (1.743499ms)\n✔ first focusable element lets keyboard users skip repeated navigation (1.569415ms)\n✔ skip target is the unique programmatically focusable main landmark (0.411683ms)\n✔ skip link has local focus visibility styling above the sticky header (0.768463ms)\n✔ empty history clears all live task metadata and never invents workers or tasks (2.604912ms)\n✔ creation and assignment do not make the orchestrator or assignee work (0.565887ms)\n✔ start activates only the recorded developer with a fresh lease (0.525275ms)\n✔ running → review → testing → approval follows ownership, not the event actor (0.495941ms)\n✔ leases expire using the selected historical event time, without changing task outcome (0.306814ms)\n✔ a former worker heartbeat cannot start the next worker or renew the old lease (0.238941ms)\n✔ evidence and unknown events alone never create a task or simulate completion (0.201625ms)\n✔ malformed timestamps fail closed for work animation (0.198881ms)\n✔ runtime and step limits stop replay work animation (0.359394ms)\n✔ input data is not mutated and duplicate event identities are ignored (0.420376ms)\nℹ tests 31\nℹ suites 0\nℹ pass 31\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 196.992017\n",
+      "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    },
+    {
+      "command": "npm run build",
+      "startedAt": "2026-11-09T08:17:12.678Z",
+      "finishedAt": "2026-11-09T08:17:16.051Z",
+      "durationMs": 3372.879177,
+      "exitCode": 0,
+      "stdout": "\n> americansites-agent-hq@0.1.0 build\n> vite build\n\nvite v7.3.7 building client environment for production...\ntransforming...\n✓ 51 modules transformed.\nrendering chunks...\ncomputing gzip size...\ndist/index.html                     0.50 kB │ gzip:   0.33 kB\ndist/assets/index-CqM7g7Pu.css     18.65 kB │ gzip:   5.01 kB\ndist/assets/index-Ch3BK5az.js   1,187.28 kB │ gzip: 333.73 kB\n✓ built in 3.06s\n",
+      "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+    }
+  ],
+  "httpChecks": [
+    {
+      "name": "sqlite file denied",
+      "path": "/data/hq.sqlite",
+      "expectedStatus": 403,
+      "startedAt": "2026-11-09T08:17:16.051Z",
+      "error": "fetch failed",
+      "passed": false
+    },
+    {
+      "name": "absolute SQLite path denied",
+      "path": "/@fs/workspace/scratch/9e17a52a0a2b/americansites/agent-hq/data/hq.sqlite",
+      "expectedStatus": 403,
+      "startedAt": "2026-11-09T08:17:16.058Z",
+      "error": "fetch failed",
+      "passed": false
+    },
+    {
+      "name": "SQLite WAL sidecar denied",
+      "path": "/data/hq.sqlite-wal",
+      "expectedStatus": 403,
+      "startedAt": "2026-11-09T08:17:16.060Z",
+      "error": "fetch failed",
+      "passed": false
+    },
+    {
+      "name": "malicious host rejected",
+      "path": "/",
+      "headers": {
+        "Host": "rebind.attacker.example"
+      },
+      "expectedStatus": 403,
+      "startedAt": "2026-11-09T08:17:16.061Z",
+      "error": "fetch failed",
+      "passed": false
+    },
+    {
+      "name": "sanitized keyboard snapshot",
+      "path": "/qa/website.html",
+      "expectedStatus": 200,
+      "startedAt": "2026-11-09T08:17:16.063Z",
+      "error": "fetch failed",
+      "passed": false
+    },
+    {
+      "name": "read-only live API reachable",
+      "path": "/api/health",
+      "expectedStatus": 200,
+      "startedAt": "2026-11-09T08:17:16.063Z",
+      "error": "fetch failed",
+      "passed": false
+    }
+  ],
+  "websiteSha256": "10e373b2bdaaf1042ebdc0bd761165446a6af1c06df0976b092fbedb4c16eccc",
+  "browserEvidence": {
+    "provenance": "Parent /root reported direct CUA observation; QA child did not repeat browser interaction.",
+    "url": "http://127.0.0.1:4173/qa/website.html",
+    "firstTab": {
+      "focused": "Skip to main content",
+      "y": 12,
+      "height": 48,
+      "outlineWidthPx": 3
+    },
+    "enter": {
+      "focusedTag": "MAIN",
+      "focusedId": "top",
+      "hash": "#top"
+    },
+    "webgl": "Cloud browser WebGL disabled; actual 3D scene rendering not visually validated."
+  },
+  "limits": [
+    "No production deployment or external integrations tested.",
+    "No actual database mutation performed by HTTP checks.",
+    "No paid API request, external form submission, or payment performed."
+  ]
+}

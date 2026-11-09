@@ -35,9 +35,32 @@
       },
     }
   </script>
+  <style>
+    /* Keep keyboard navigation available even if the external stylesheet fails. */
+    .skip-link {
+      position: fixed;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 100;
+      transform: translateY(calc(-100% - 1rem));
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      background: #ffffff;
+      color: #071429;
+      font: 700 1rem/1.5 system-ui, sans-serif;
+      text-decoration: underline;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+      outline: 3px solid #071429;
+      outline-offset: 3px;
+    }
+  </style>
 </head>
 
 <body class="bg-white text-ink antialiased">
+  <a class="skip-link" href="#top">Skip to main content</a>
   <!-- Top banner (subtle patriotic vibe without going heavy red) -->
   <div class="bg-navy-950 text-white">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -73,7 +96,7 @@
   </header>
 
   <!-- Hero -->
-  <main id="top">
+  <main id="top" tabindex="-1">
     <section class="relative overflow-hidden">
       <div class="absolute inset-0 bg-navy-950 bg-stars"></div>
       <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
