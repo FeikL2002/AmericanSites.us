@@ -1,0 +1,74 @@
+{
+  "runKey": "agent-hq-company-build-2026-11-09",
+  "role": "scout",
+  "recordedAt": "2026-11-09T10:04:31.850764+00:00",
+  "usage": {
+    "webSearchQueries": 1,
+    "sourcePagesOpened": 2,
+    "maxWebSearchQueries": 3,
+    "maxSourcePagesOpened": 7
+  },
+  "status": "research_complete",
+  "outreachSent": false,
+  "companies": [
+    {
+      "id": "riggs-wrestling",
+      "name": "Riggs Wrestling Academy",
+      "location": "Alliance, Ohio",
+      "website": "https://riggswrestlingacademy.com/",
+      "sourceUrl": "https://riggswrestlingacademy.com/registration",
+      "sourceUrls": [
+        "https://riggswrestlingacademy.com/registration",
+        "https://riggswrestlingacademy.com/"
+      ],
+      "observedFact": "The official registration page requires registration before attending practice and publishes a $10 cash-only drop-in fee. The homepage repeats that fee and describes recurring Monday and Wednesday practices. General registration text also mentions cash/check.",
+      "opportunityHypothesis": "A single practice desk could help track registration readiness, attendance and already-collected payments if those records are not already combined. The current internal software and administrative burden are unknown.",
+      "confidence": "verified",
+      "verificationScope": "Official published information only. Operational need, current internal process and buying intent are unverified. Retrieved search sources are cached, so confirm terms with the owner before actual use.",
+      "stage": "draft",
+      "discoveryQuestion": "How do you keep registration, practice attendance and cash drop-in payments together now, and which part takes the most admin time?",
+      "nextStep": "Lewis reviews the independent concept, then confirms the current workflow and need with the club owner before offering an integration. No message is sent by this pass.",
+      "notes": "Previously recorded lead, not a newly discovered business or confirmed client. Rechecked the official published process during this bounded pass. Preserve its existing contact/opt-out state. Use only city because published addresses serve different location/parking contexts.",
+      "priorityReason": "A specific repeated, published practice workflow makes a small concept possible without inventing a missing website or replacing unknown software."
+    }
+  ],
+  "buildBrief": {
+    "title": "Practice Desk \u2014 independent workflow concept",
+    "companyId": "riggs-wrestling",
+    "purpose": "Let Lewis demonstrate a possible check-in and payment-record workflow while clearly stating that the club has not commissioned it.",
+    "features": [
+      "Fictional anonymous athlete IDs only",
+      "Registration-readiness checklist",
+      "Practice check-in and attendance count",
+      "Records of payments already received, with cash as the published drop-in method",
+      "Cash/check logging kept distinct; any check flow requires owner confirmation before use",
+      "Session totals and CSV export with a visible DEMO label"
+    ],
+    "acceptance": [
+      "No real participant or guardian data",
+      "No online payment processing",
+      "No external submission, outreach or owner contact",
+      "Sample payments never count as AmericanSites revenue",
+      "Changing attendance/payment records updates derived totals accurately",
+      "Clear independent-concept label and source links"
+    ],
+    "boundary": "A public website shows published policy, not the absence of internal software. This is a hypothesis to test, not a qualified sale."
+  },
+  "sources": [
+    {
+      "url": "https://riggswrestlingacademy.com/registration",
+      "title": "Registration \u2014 Riggs Wrestling Academy",
+      "toolRef": "turn1view0",
+      "kind": "official_primary",
+      "usedFor": "Registration prerequisite and published drop-in payment terms"
+    },
+    {
+      "url": "https://riggswrestlingacademy.com/",
+      "title": "Riggs Wrestling Academy",
+      "toolRef": "turn1view1",
+      "kind": "official_primary",
+      "usedFor": "Recurring practice context and corroborating fee"
+    }
+  ],
+  "ownerExplanation": "Scout checked two official pages and found a repeated registration/check-in/payment workflow to explore. The next artifact is a small independent practice-desk concept. No one has confirmed a problem or agreed to buy it."
+}

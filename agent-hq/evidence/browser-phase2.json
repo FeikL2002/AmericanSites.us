@@ -1,0 +1,22 @@
+{
+  "recordedAt": "2026-11-09T10:26:07.540Z",
+  "observer": "root via managed CUA Chrome",
+  "url": "http://127.0.0.1:4173/",
+  "observed": [
+    "Live task records loaded; QA ownership and active state appeared in office",
+    "Seven-room coded 2D office visually inspected; actual WebGL unavailable",
+    "Private accounting source/date and snapshot limitations visible; no private amounts or references copied to this report",
+    "Session-create form initially blocked by iframe sandbox; allow-forms correction enabled local handler while CSP retained network/submission blocking",
+    "Sample session created successfully in opaque embedded frame",
+    "Anonymous DEMO-001 added; check-in disabled until registration reviewed",
+    "After registration review, sample check-in changed on-mat count to one",
+    "Recording fictional cash updated sample payment totals and outstanding amount correctly",
+    "Prepare-task Escape closed dialog and focus returned to prepare-task button",
+    "Desktop page had no horizontal overflow"
+  ],
+  "limits": [
+    "Browser CSV download wait timed out; no downloaded file verified. CSV content/domain tests passed independently.",
+    "WebGL disabled in cloud Chrome; actual 3D fidelity/performance and mobile-device behavior remain unverified.",
+    "No outreach, production deployment, financial write or real participant data used."
+  ]
+}

@@ -61,6 +61,10 @@ The repository includes a historical `.venv`; it is not a portable installation.
 
 The [ZIP archive directory](Americansites.us%22websites%22/) is useful for tracing earlier project packages. Inspect an archive's contents and configuration before reusing it. The source tree, third-party dependencies, and hosted application state can evolve independently.
 
+## Agent HQ development preview
+
+The isolated [Agent HQ subproject](agent-hq/README.md) adds a React/Three.js office, a persistent local task/event backend, evidence-based worker status, and a verified keyboard-accessibility task. It is not deployed to the live business website.
+
 ## Related work
 
 - [Software and engineering projects](https://github.com/FeikL2002/Engineered-Solutions-self-made-)
